@@ -111,7 +111,7 @@
                             <i data-feather="home" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Dashboard
                         </a>
-                        <a href="#" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <a href="tasks.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="check-circle" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Tasks
                         </a>
@@ -119,15 +119,15 @@
                             <i data-feather="calendar" class="mr-3 h-6 w-6 text-green-500"></i>
                             Calendar
                         </a>
-                        <a href="#" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <a href="analytics.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="bar-chart-2" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Analytics
                         </a>
-                        <a href="#" class="sidebar-item group flex items-center px极-2 py-2 text-sm font-medium rounded-md">
+                        <a href="wellness.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="heart" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Wellness
                         </a>
-                        <a href="#" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <a href="settings.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="settings" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Settings
                         </a>
@@ -342,17 +342,105 @@
     </div>
 
     <script>
-        // Initialize calendar
         document.addEventListener('DOMContentLoaded', function() {
+            const STORAGE_KEY = 'ezroTasks';
+            const STORAGE_UPDATE_KEY = `${STORAGE_KEY}:updated`;
+            const PRIORITY_COLORS = {
+                high: '#e53e3e',
+                medium: '#ed8936',
+                low: '#38a169'
+            };
+
             const calendarEl = document.getElementById('calendar');
-            const calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                events: [
+            const calendarModal = document.getElementById('calendar-modal');
+            const connectCalendarBtn = document.getElementById('connect-calendar-btn');
+            const closeModalBtn = document.getElementById('close-modal');
+            const mobileMenuToggle = document.querySelector('button[aria-controls="mobile-menu"]');
+
+            let calendar = null;
+            let taskEventSource = null;
+
+            if (calendarEl) {
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    events: getStaticEvents(),
+                    eventClick: function(info) {
+                        alert('Event: ' + info.event.title);
+                    },
+                    dateClick: function(info) {
+                        alert('Clicked on: ' + info.dateStr);
+                    }
+                });
+
+                calendar.render();
+                refreshTaskEvents();
+            }
+
+            window.addEventListener('storage', (event) => {
+                if (event.key === STORAGE_KEY || event.key === STORAGE_UPDATE_KEY) {
+                    refreshTaskEvents();
+                }
+            });
+
+            if (connectCalendarBtn && calendarModal) {
+                connectCalendarBtn.addEventListener('click', () => {
+                    calendarModal.classList.remove('hidden');
+                });
+            }
+
+            if (closeModalBtn && calendarModal) {
+                closeModalBtn.addEventListener('click', () => {
+                    calendarModal.classList.add('hidden');
+                });
+            }
+
+            if (calendarModal) {
+                calendarModal.addEventListener('click', (event) => {
+                    if (event.target === calendarModal) {
+                        calendarModal.classList.add('hidden');
+                    }
+                });
+            }
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                    }
+                });
+            }
+
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            feather.replace();
+
+            function refreshTaskEvents() {
+                if (!calendar) {
+                    return;
+                }
+
+                if (taskEventSource) {
+                    taskEventSource.remove();
+                    taskEventSource = null;
+                }
+
+                const taskEvents = buildTaskEvents(loadTasksFromStorage());
+                if (taskEvents.length) {
+                    taskEventSource = calendar.addEventSource(taskEvents);
+                }
+            }
+
+            function getStaticEvents() {
+                return [
                     {
                         title: 'Client Meeting',
                         start: '2024-04-15T10:00:00',
@@ -375,46 +463,66 @@
                         end: '2024-04-18T17:00:00',
                         color: '#4299e1'
                     }
-                ],
-                eventClick: function(info) {
-                    alert('Event: ' + info.event.title);
-                },
-                dateClick: function(info) {
-                    alert('Clicked on: ' + info.dateStr);
+                ];
+            }
+
+            function loadTasksFromStorage() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed)) {
+                            return parsed.map(normalizeTask);
+                        }
+                    }
+                } catch (error) {
+                    console.warn('Unable to parse stored tasks for calendar', error);
                 }
-            });
-            calendar.render();
-        });
+                return [];
+            }
 
-        // Modal functionality
-        document.getElementById('connect-calendar-btn').addEventListener('click', function() {
-            document.getElementById('calendar-modal').classList.remove('hidden');
-        });
+            function normalizeTask(task) {
+                const dueValue = task && task.due ? task.due : null;
+                const dueDate = task && task.dueDate ? task.dueDate : (dueValue ? dueValue.split('T')[0] : null);
+                const dueTime = task && typeof task.dueTime === 'string' && task.dueTime.trim() !== ''
+                    ? task.dueTime
+                    : extractTime(dueValue);
 
-        document.getElementById('close-modal').addEventListener('click', function() {
-            document.getElementById('calendar-modal').classList.add('hidden');
-        });
+                return {
+                    id: task && task.id ? task.id : Date.now(),
+                    title: task && task.title ? task.title : 'Task',
+                    priority: task && task.priority ? task.priority : 'low',
+                    dueDate,
+                    dueTime,
+                    completed: Boolean(task && task.completed)
+                };
+            }
 
-        // Close modal when clicking outside
-        document.getElementById('calendar-modal').addEventListener('click', function(e) {
-            if (e.target.id === 'calendar-modal') {
-                document.getElementById('calendar-modal').classList.add('hidden');
+            function extractTime(value) {
+                if (!value || !value.includes('T')) {
+                    return null;
+                }
+                const timeSection = value.split('T')[1];
+                return timeSection ? timeSection.slice(0, 5) : null;
+            }
+
+            function buildTaskEvents(taskList) {
+                return taskList
+                    .filter((task) => task && task.dueDate && !task.completed)
+                    .map((task) => {
+                        const hasTime = Boolean(task.dueTime);
+                        const eventStart = hasTime ? `${task.dueDate}T${task.dueTime}` : task.dueDate;
+
+                        return {
+                            id: `task-${task.id}`,
+                            title: task.title,
+                            start: eventStart,
+                            allDay: !hasTime,
+                            color: PRIORITY_COLORS[task.priority] || PRIORITY_COLORS.low
+                        };
+                    });
             }
         });
-
-        // Mobile menu toggle
-        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Initialize animations
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-        
-        feather.replace();
     </script>
 </body>
 </html>

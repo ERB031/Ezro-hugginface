@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Ezro.AI</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+        .sidebar-item:hover {
+            background-color: #f0fff4;
+        }
+        .sidebar-item.active {
+            background-color: #e6fffa;
+            border-left: 4px solid #38a169;
+        }
+        .task-item:hover {
+            background-color: #f0fff4;
+        }
+        .task-checkbox:checked + .task-text {
+            text-decoration: line-through;
+            color: #a0aec0;
+        }
+        .priority-high { border-left: 4px solid #e53e3e; }
+        .priority-medium { border-left: 4px solid #ed8936; }
+        .priority-low { border-left: 4px solid #38a169; }
+        .break-suggestion {
+            background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%);
+            border-left: 4px solid #38a169;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm极:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="text-green-500 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="pricing.html" class="nav-link border-transparent text极-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                    <a href="calendar.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Calendar</a>
+                    <a href="tasks.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Tasks</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2极 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:out极line-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</极a>
+                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="calendar.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Calendar</a>
+                <a href="tasks.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Tasks</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <div class="flex items-center px-4">
+                        <div class极="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-base font-medium text-gray-800">John Doe</div>
+                            <div class="text-sm font-medium text-gray-500">john@example.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 border-r border-gray-200 bg-white">
+                <div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="flex-1 px-3 space-y-1">
+                        <a href="dashboard.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="home" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Dashboard
+                        </a>
+                        <a href="tasks.html" class="sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="check-circle" class="mr-3 h-6 w-6 text-green-500"></极i>
+                            Tasks
+                        </a>
+                        <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text极-sm font-medium rounded-md">
+                            <i data-feather="calendar" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Calendar
+                        </a>
+                        <a href="analytics.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="bar-chart-2" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Analytics
+                        </a>
+                        <a href="wellness.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="heart" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Wellness
+                        </a>
+                        <a href="settings.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="settings" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+                    <div class="flex items-center">
+                        <div>
+                            <img class="极h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4极" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-base font-medium text-gray-极700">John Doe</p>
+                            <p class="text-sm font-medium text-gray-500">View profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <!-- Header -->
+                <div class="gradient-bg rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Task Management</h2>
+                            <p class="mt-1 text-gray-600">Organize and prioritize your work effectively</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <select class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>All Tasks</option>
+                                    <option>Today</option>
+                                    <option>This Week</option>
+                                    <option>High Priority</option>
+                                    <option>Completed</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="add-task-btn">
+                                <i data-feather="plus" class="mr-2 h-4 w-4"></i>
+                                Add Task
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Lists -->
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+                    <!-- Today's Tasks -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Today's Tasks
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                Due today, April 15
+                            </p>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <ul class="divide-y divide-gray-200" id="today-tasks">
+                                <li class="task-item py-4 priority-high">
+                                    <div class="flex items-center">
+                                        <input id="task-1" name="task-1" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-1" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Complete project proposal for client meeting</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due today at 2:00 PM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="task-item py-4 priority-medium">
+                                    <div class="flex items-center">
+                                        <input id="task-2" name="task-2" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-2" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Review team's quarterly performance metrics</span>
+                                            <span class="text-xs text-gray-500 block mt极-1">Due today at 4:30 PM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="task-item py-4 priority-low">
+                                    <div class="flex items-center">
+                                        <input id="task-3" name="task-3" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-3" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Schedule 1:1 meetings with direct reports</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due today at 5:00 PM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Tasks -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px极-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Upcoming Tasks
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                Due this week
+                            </极p>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <ul class="divide-y divide-gray-200" id="upcoming-tasks">
+                                <li class="task-item py-4 priority-high">
+                                    <div class="flex items-center">
+                                        <input id="task-4" name="task-4" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-4" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Prepare presentation for tomorrow's all-hands</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due tomorrow at 9:00 AM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="task-item py-4 priority-medium">
+                                    <div class="flex items-center">
+                                        <input id="task-5" name="task-5" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-5" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Follow up with marketing on campaign results</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due tomorrow at 11:00 AM</span>
+                                        </label>
+                                    </极div>
+                                </li>
+                                <li class="task-item py-4 priority-low">
+                                    <div class="flex items-center">
+                                        <input id="task-6" name="task-6" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                        <label for="task-6" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-700">Update project documentation</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due Friday at 3:00 PM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Completed Tasks -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Completed Tasks
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                Recently finished
+                            </p>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <ul class="divide-y divide-gray-200" id="completed-tasks">
+                                <li class="task-item py-4">
+                                    <div class="flex items-center">
+                                        <input id="task-7" name="task-7" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
+                                        <label for="task-7" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-500">Respond to client emails</span>
+                                            <span class="text-xs text-gray-400 block mt-1">Completed today at 10:30 AM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="task-item py-4">
+                                    <div class="flex items-center">
+                                        <input id="task-8" name="task-8" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
+                                        <label for="task-8" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-500">Team weekly sync meeting</span>
+                                            <span class="text-xs text-gray-400 block mt-1">Completed today at 9:00 AM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="task-item py-4">
+                                    <div class="flex items-center">
+                                        <input id="task-9" name="task-9极" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
+                                        <label for="task-9" class="ml-3 block">
+                                            <span class="task-text text-sm font-medium text-gray-500">Review project timeline</span>
+                                            <span class="text-xs text-gray-400 block mt-1">Completed yesterday at 4:00 PM</span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Break Suggestion -->
+                <div class="mt-6 break-suggestion rounded-lg p-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i data-feather="heart" class="h-6 w-6 text-green-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Wellness Break Suggestion</h3>
+                            <p class="mt-1 text-gray-600">You've been working on tasks for a while. Take a 5-minute break to:</p>
+                            <p class="mt-2 font-medium text-green-700">Stretch your legs and take a short walk around the office</p>
+                            <button class="mt-4 btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="take-break-btn">
+                                I'll take this break
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task Stats -->
+                <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-4">
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="check-circle"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Total Tasks</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900">9</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12极 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="check-square"></极i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Completed</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900">3</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600 mx-auto">
+                            <i data-feather="clock"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Pending</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900">6</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600 mx-auto">
+                            <i data-feather="alert-triangle"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Overdue</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" id="task-modal">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Add New Task</h3>
+                
+                <form class="space-y-4" id="task-form">
+                    <div>
+                        <label for="task-title" class="block text-sm font-medium text-gray-700">Task Title</label>
+                        <input type="text" id="task-title" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="task-description" class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="task-description" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="task-priority" class="block text-sm font-medium text-gray-700">Priority</label>
+                        <select id="task-priority" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="task-due" class="block text-sm font-medium text-gray-700">Due Date</label>
+                        <input type="date" id="task-due" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button type="submit" class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium">
+                            Save Task
+                        </button>
+                        <button type="button" id="cancel-task" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 text-sm font-medium">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Task management functionality
+        let tasks = [
+            { id: 1, title: "Complete project proposal for client meeting", due: "2024-04-15T14:00", priority: "high", completed: false },
+            { id: 2, title: "Review team's quarterly performance metrics", due: "2024-04-15T16:30", priority: "medium", completed: false },
+            { id: 3, title: "Schedule 1:1 meetings with direct reports", due: "2024-04-15T17:00", priority: "low", completed: false },
+            { id: 4, title: "Prepare presentation for tomorrow's all-hands", due: "2024-04-16T09:00", priority: "high", completed: false },
+            { id: 5, title: "Follow up with marketing on campaign results", due: "2024-04-16T11:00", priority: "medium", completed: false },
+            { id: 6, title: "Update project documentation", due: "2024-04-19T15:00", priority: "low", completed: false },
+            { id: 7, title: "Respond to client emails", due: "2024-04-15T10:30", priority: "medium", completed: true },
+            { id: 8, title: "Team weekly sync meeting", due: "2024-04-15T09:00", priority: "low", completed: true },
+            { id: 9, title: "Review project timeline", due: "2024-04-14T16:00", priority: "medium", completed: true }
+        ];
+
+        // Break suggestions
+        const breakSuggestions = [
+            { title: "Take a hydration break", description: "Drink a glass of water and stretch your arms" },
+            { title: "Eye relaxation", description: "Look away from your screen for 2 minutes and focus on distant objects" },
+            { title: "Deep breathing", description: "Take 5 deep breaths to reset your focus" },
+            { title: "Quick stretch", description: "Stand up and stretch your back and legs for 3 minutes" },
+            { title: "Mindful moment", description: "Close your eyes and focus on your breathing for 2 minutes" }
+        ];
+
+        // Task modal functionality
+        document.getElementById('add-task-btn').addEventListener('click', function() {
+            document.getElementById('task-modal').classList.remove('hidden');
+        });
+
+        document.getElementById('cancel-task').addEventListener('click', function() {
+            document.getElementById('task-modal').classList.add('hidden');
+            document.getElementById('task-form').reset();
+        });
+
+        document.getElementById('task-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('task-title').value;
+            const description = document.getElementById('task-description').value;
+            const priority = document.getElementById('task-priority').value;
+            const due = document.getElementById('task-due').value;
+            
+            // Create new task
+            const newTask = {
+                id: tasks.length + 1,
+                title,
+                description,
+                priority,
+                due: due ? new Date(due).toISOString() : null,
+                completed: false
+            };
+            
+            tasks.push(newTask);
+            renderTasks();
+            document.getElementById('task-modal').classList.add('hidden');
+            document.getElementById('task-form').reset();
+            
+            // Show break suggestion after adding a task
+            showBreakSuggestion();
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('task-modal').addEventListener('click', function(e) {
+            if (e.target.id === 'task-modal') {
+                document.getElementById('task-modal').classList.add('hidden');
+                document.getElementById('task-form').reset();
+            }
+        });
+
+        // Task completion handling
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('task-checkbox')) {
+                const taskId = parseInt(e.target.id.split('-')[1]);
+                const task = tasks.find(t => t.id === taskId);
+                if (task) {
+                    task.completed = e.target.checked;
+                    renderTasks();
+                    
+                    // Show break suggestion after completing a task
+                    if (task.completed) {
+                        showBreakSuggestion();
+                    }
+                }
+            }
+        });
+
+        // Break suggestion functionality
+        document.getElementById('take-break-btn').addEventListener('click', function() {
+            alert("Great! Taking regular breaks improves productivity and wellbeing.");
+            // Here you would typically start a timer or track the break
+        });
+
+        function showBreakSuggestion() {
+            const randomSuggestion = breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)];
+            const breakElement = document.querySelector('.break-suggestion');
+            breakElement.querySelector('h3').textContent = "Wellness Break Suggestion";
+            breakElement.querySelector('p:nth-of-type(2)').textContent = randomSuggestion.title;
+            breakElement.querySelector('p:nth-of-type(3)').textContent = randomSuggestion.description;
+        }
+
+        function renderTasks() {
+            const today = new Date().toDateString();
+            const todayTasks = tasks.filter(task => {
+                if (task.completed) return false;
+                if (!task.due) return false;
+                return new Date(task.due).toDateString() === today;
+            });
+            
+            const upcomingTasks = tasks.filter(task => {
+                if (task.completed) return false;
+                if (!task.due) return false;
+                return new Date(task.due).toDateString() !== today;
+            });
+            
+            const completedTasks = tasks.filter(task => task.completed);
+            
+            renderTaskList('today-tasks', todayTasks);
+            renderTaskList('upcoming-tasks', upcomingTasks);
+            renderTaskList('completed-tasks', completedTasks);
+            
+            // Update stats
+            document.querySelector('[data-stat="total"]').textContent = tasks.length;
+            document.querySelector('[data-stat="completed"]').textContent = completedTasks.length;
+            document.querySelector('[data-stat="pending"]').textContent = tasks.length - completedTasks.length;
+            document.querySelector('[data-stat="overdue"]').textContent = tasks.filter(task => {
+                if (task.completed) return false;
+                if (!task.due) return false;
+                return new Date(task.due) < new Date();
+            }).length;
+        }
+
+        function renderTaskList(containerId, tasks) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            tasks.forEach(task => {
+                const dueDate = task.due ? new Date(task.due) : null;
+                const dueString = dueDate ? `Due ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}` : 'No due date';
+                
+                const li = document.createElement('li');
+                li.className = `task-item py-4 priority-${task.priority}`;
+                li.innerHTML = `
+                    <div class="flex items-center">
+                        <input id="task-${task.id}" name="task-${task.id}" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" ${task.completed ? 'checked' : ''}>
+                        <label for="task-${task.id}" class="ml-3 block">
+                            <span class="task-text text-sm font-medium ${task.completed ? 'text-gray-500' : 'text-gray-700'}">${task.title}</span>
+                            <span class="text-xs ${task.completed ? 'text-gray-400' : 'text-gray-500'} block mt-1">${dueString}</span>
+                        </label>
+                    </div>
+                `;
+                container.appendChild(li);
+            });
+        }
+
+        // Mobile menu toggle
+        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Initialize
+        renderTasks();
+        showBreakSuggestion();
+        AOS.init({ duration: 800, once: true });
+        feather.replace();
+    </script>
+</body>
+</html>

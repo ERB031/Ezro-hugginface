@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="极width=device-width, initial-scale=1.0">
+    <title>Settings - Ezro.AI</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+        .sidebar-item:hover {
+            background-color: #极f0fff4;
+        }
+        .sidebar-item.active {
+            background-color: #e6fffa;
+            border-left: 4px solid #38a169;
+        }
+        .setting-card {
+            transition: all 0.3s ease;
+        }
+        .setting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="text-green-500 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm极:flex sm:space-x-8">
+                    <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                    <a href="calendar.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Calendar</a>
+                    <a href="settings.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Settings</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class极="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex text-sm rounded-full focus:outline-none focus:ring极-2 focus:ring-offset-2 focus:ring-green-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+极                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray极-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="calendar.html"极 class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Calendar</a>
+                <a href="settings.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Settings</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <div class="flex items-center px-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-base font-medium text-gray-800">John Doe</div>
+                            <div class="text-sm font-medium text-gray-500">john@example.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 border-r border-gray-200 bg-white">
+                <极div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="flex-极1 px-3 space-y-1">
+                        <a href="dashboard.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="home" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Dashboard
+                        </a>
+                        <a href="tasks.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="check-circle" class="mr-3 h-6 w-6 text-gray-400 group-h极over:text-gray-500"></i>
+                            Tasks
+                        </a>
+                        <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="calendar" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></极i>
+                            Calendar
+                        </a>
+                        <a href="analytics.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="bar-chart-2" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Analytics
+                        </极a>
+                        <a href="wellness.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="heart" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Wellness
+                        </a>
+                        <a href="settings.html" class="sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="settings" class="mr-3 h-6 w-6 text-green-500"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+                    <div class="flex items-center">
+                        <div>
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-base font-medium text-gray-700">John Doe</极p>
+                            <p class="text-sm font-medium text-gray-500">View profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <!-- Header -->
+                <div class="gradient-bg rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Settings</h2>
+                            <p class="mt-1 text-gray-600">Customize your Ezro.AI experience</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50">
+                                <i data-feather="download" class="mr-2 h-4 w-4"></i>
+                                Export Data
+                            </button>
+                            <button class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium">
+                                <i data-feather="save" class="mr-2 h-4 w-4"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Grid -->
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                    <!-- Profile Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                <i data-feather="user" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Profile Settings
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" value="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" value="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                                <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500" value="Product Manager">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Engineering</option>
+                                    <option>Product</option>
+                                    <option>Design</option>
+                                    <option>Marketing</option>
+                                    <option>Sales</option>
+                                    <option>Operations</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                <i data-feather="bell" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Notifications
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Task Reminders</p>
+                                    <p class="text-xs text-gray-500">Get notified about upcoming tasks</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Wellness Nudges</p>
+                                    <p class="text-xs text-gray-500">Receive break and wellness reminders</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11极 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after极:content-[''] after:absolute after:top-[2px] after:left-[2极px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Email Updates</p>
+                                    <p class="text-xs text-gray-500">Receive weekly analytics reports</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:极ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Sound Alerts</p>
+                                    <p class="text-xs text-gray-500">Play sounds for notifications</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:极bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                <i data-feather="shield" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Privacy & Data
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Data Collection</p>
+                                    <p class="text-xs text-gray-500">Allow anonymized data collection for insights</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Team Insights</p>
+                                    <p class="text-xs text-gray-500">Share anonymous data with team</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Auto Data Deletion</p>
+                                    <p class="text-xs text-gray-500">Automatically delete old data after 90 days</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked极:bg-green-600"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integration Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                <i data-feather="settings" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Integrations
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                        <i data-feather="calendar" class="h-5 w-5 text-blue-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Google Calendar</p>
+                                        <p class="text-xs text-gray-500">Connected</p>
+                                    </div>
+                                </div>
+                                <button class="text-red-600 hover:text-red-800 text-sm font-medium">
+                                    <i data-feather="x" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class极="flex items-center">
+                                    <div class="flex-shrink-0 bg-purple-100 rounded-md p-2">
+                                        <i data-feather="trello" class="h-5 w-5 text-purple-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Trello</p>
+                                        <p class="text-xs text-gray-500">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="text-green-600 hover:text-green-800 text-sm font-medium">
+                                    <i data-feather="link" class="h-4 w-4"></极i>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-orange-100 rounded-md p-2">
+                                        <i data-feather="slack" class="h-5 w-5 text-orange-600"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">Slack</p>
+                                        <p class="text-xs text-gray-500">Not connected</p>
+                                    </div>
+                                </div>
+                                <button class="text-green-600 hover:text-green-800 text-sm font-medium">
+                                    <i data-feather="link" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appearance Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                <i data-feather="eye" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Appearance
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Theme</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Light</option>
+                                    <option>Dark</option>
+                                    <option>System Default</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Font Size</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Small</option>
+                                    <option selected>Medium</option>
+                                    <option>Large</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Density</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Comfortable</option>
+                                    <option selected>Cozy</option>
+                                    <option>Compact</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="setting-card bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text极-gray-900">
+                                <i data-feather="user" class="h-5 w-5 text-green-600 mr-2 inline"></i>
+                                Account
+                            </h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6 space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Current Plan</label>
+                                <p class="text-sm text-gray-900 bg-green-50 px-3 py-2 rounded-md">Team Plan - $12/user/month</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Billing Cycle</label>
+                                <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option>Monthly</option>
+                                    <option>Annual (Save 20%)</option>
+                                </select>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="flex-1 bg-green-100 text-green-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-green-200">
+                                    Upgrade Plan
+                                </button>
+                                <button class="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200">
+                                    Cancel Subscription
+                                </button>
+                            </div>
+                            <div class="pt-4 border-t border-gray-200">
+                                <button class="w-full bg-red-100 text-red-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-red-200">
+                                    <i data-feather="trash-2" class="h-4 w-4 mr-2 inline"></i>
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        feather.replace();
+    </script>
+</body>
+</html>

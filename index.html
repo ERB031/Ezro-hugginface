@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ezro.AI - Workplace Wellness & Productivity</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="text-green-500 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-极1 border-b-2 text-sm font-medium">Dashboard</a>
+                    <a href="calendar.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Calendar</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="dashboard.html" class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium">Get Started</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="calendar.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Calendar</a>
+                <a href="dashboard.html" class="btn-primary text-white block px-4 py-2 rounded-md text-base font-medium mx-3 my-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg pt-24 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="mt-12 lg:mt-0" data-aos="fade-right">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        <span class="block">Work Smarter,</span>
+                        <span class="block text-green-600">Live Better</span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        Ezro.AI helps teams achieve peak productivity while maintaining work-life balance through intelligent task management and wellness nudges.
+                    </p>
+                    <div class="mt-8 sm:flex sm:justify-center lg:justify-start">
+                        <div class="rounded-md shadow">
+                            <a href="dashboard.html" class="btn-primary flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10">
+                                Try for Free
+                            </a>
+                        </div>
+                        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                            <a href="pricing.html" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-white md:py-4 md:text-lg md:px-10">
+                                View Plans
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0" data-aos="fade-left">
+                    <img class="rounded-lg shadow-xl" src="http://static.photos/wellness/1200x630/1" alt="Happy team working">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    A better way to work and live
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Our AI-powered platform helps you stay productive while maintaining your wellbeing.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
+                            <i data-feather="check-circle"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-gray-900">Task Management</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Intelligent task prioritization and scheduling that adapts to your workflow.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
+                            <i data-feather="heart"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-gray-900">Wellness Nudges</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Gentle reminders to stretch, hydrate, and take breaks when you need them most.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
+                            <i data-feather="bar-chart-2"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-gray-900">Work Insights</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                Anonymous analytics to help teams maintain healthy work habits and balance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600">
+                            <i data-feather="shield"></i>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-medium text-gray-900">OSHA Safe</h3>
+                            <p class="mt-2 text-base text-gray-500">
+                                No medical data collection - strictly wellness and productivity focused.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="gradient-bg py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-12">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">How it works</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Simple integration, powerful results
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12" data-aos="fade-right">
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-10 w-10 rounded-md bg-green-100 text-green-600">
+                                    <span class="font-bold">1</span>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Connect Your Tools</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Integrate with your calendar, project management tools, and CRM in just a few clicks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-10 w-10 rounded-md bg-green-100 text-green-600">
+                                    <span class="font-bold">2</span>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Let Ezro Analyze</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Our AI reviews your workload and patterns to create personalized recommendations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-10 w-10 rounded-md bg-green-100 text-green-600">
+                                    <span class="font-bold">3</span>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Work Smarter</h3>
+                                <p class="mt-2 text-base text-gray-500">
+                                    Receive intelligent task scheduling, wellness nudges, and balance insights.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <img class="rounded-lg shadow-xl" src="http://static.photos/workspace/1200x630/1" alt="Dashboard preview">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-12">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">Testimonials</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Trusted by forward-thinking teams
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/1" alt="Sarah Johnson">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Sarah Johnson</h3>
+                            <p class="text-sm text-gray-500">Product Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Ezro.AI has completely transformed how our team works. We're more productive but also feel less stressed. The wellness nudges are perfectly timed and never intrusive."
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/2" alt="Michael Chen">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Michael Chen</h3>
+                            <p class="text-sm text-gray-500">CTO</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The task management features are brilliant. It's like having a personal assistant that knows exactly when I should tackle each item on my list."
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/3" alt="Emma Rodriguez">
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-gray-900">Emma Rodriguez</h3>
+                            <p class="text-sm text-gray-500">HR Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Our employee satisfaction scores have improved significantly since implementing Ezro.AI. It helps us maintain a healthy work culture without being intrusive."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-green-600">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <span class="block">Ready to transform your workplace?</span>
+                <span class="block text-green-100">Start your free trial today.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="dashboard.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-green-50">
+                        Get started
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="pricing.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-700 hover:bg-green-800">
+                        Learn more
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Product</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Features</a></li>
+                        <li><a href="pricing.html" class="text-base text-gray-500 hover:text-green-600">Pricing</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Integrations</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Updates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">About</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Blog</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Help Center</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Community</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Webinars</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Status</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Security</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-green-600">
+                        <i data-feather="twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-600">
+                        <i data-feather="facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-600">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-600">
+                        <i data-feather="instagram"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-base text-gray-500 md:mt-0 md:order-1">
+                    &copy; 2023 Ezro.AI. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        feather.replace();
+    </script>
+</body>
+</html>

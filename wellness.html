@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness - Ezro.AI</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdeliv极r.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10极px 20px rgba(72, 187, 120, 0.2);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+        .sidebar-item:hover {
+            background-color: #f0fff4;
+        }
+        .sidebar-item.active {
+            background-color: #e6fffa;
+            border-left: 4px solid #38a169;
+        }
+        .wellness-score {
+            background: conic-gradient(#48bb78 var(--percentage), #f0fff4 var(--percentage));
+            box-shadow: 0 4px 6px rgba(72, 187, 120, 0.1);
+            border: 3px solid white;
+        }
+        .break-timer {
+            background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%);
+            border-left: 4px solid #38a169;
+        }
+        .nudge-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items极-center">
+                        <i data-feather="activity" class="text-green-500 h-8极 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</极a>
+                    <a href="calendar.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Calendar</a>
+                    <a href="wellness.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Wellness</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class极="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded极="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="calendar.html" class="border-transparent text-gray-500 hover:bg-gray极-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4极 text-base font-medium">Calendar</a>
+                <a href="wellness.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-极2 border-l-4 text-base font-medium">Wellness</a>
+                <div class="pt-4 border-t border-gray-200">
+                    <div class="flex items-center px极-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <div class="text-base font-medium text-gray-800">John Doe</div>
+                            <div class="text-sm font-medium text-gray-500极">john@example.com</div>
+                        </div>
+                    </div>
+                </div>
+极            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 border-r border-gray-200 bg-white">
+                <div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="flex-1 px-3 space-y-1">
+                        <a href="dashboard.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="home" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Dashboard
+                        </a>
+                        <a href="tasks.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="check-circle" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Tasks
+                        </a>
+                        <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather极="calendar" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Calendar
+                        </a>
+                        <a href="analytics.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="bar-chart-2" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Analytics
+                        </a>
+                        <a href="wellness.html" class="sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="heart" class="mr-3 h-6 w-6 text-green-500"></i>
+                            Wellness
+                        </a>
+                        <a href="settings.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="settings" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+                <div class="极flex-shrink-0 flex border-t border-gray-200 p-极4">
+                    <div class="flex items-center">
+                        <div>
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-base font-medium text-gray-700">John Doe</p>
+                            <p class="text-sm font-medium text-gray-500">View profile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <!-- Header -->
+                <div class="gradient-bg rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-900">Wellness Dashboard</h2>
+                            <p class="mt-1 text-gray-600">Track and improve your work-life balance</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <select class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <option>Last 7 days</option>
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                                <option>This year</option>
+                            </select>
+                            <button class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium">
+                                <i data-feather="settings" class="mr-2 h-4 w-4"></i>
+                                Wellness Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Metrics -->
+                <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="wellness-score w-16 h-16 mx-auto" style="--percentage: 82%">
+                            <span class="text-white font-bold text-lg">82</span>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Wellness Score</h3>
+                        <p class="mt-2 text-sm text-green-600">Excellent</p>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="coffee"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Break Adherence</h3>
+                        <p class="mt-2 text-2xl font-bold text-gray-900">65%</p>
+                        <p class="mt-1 text-sm text-yellow-600">+8% from last week</p>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600 mx-auto">
+                            <i data-feather="clock"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Work-Life Balance</h3>
+                        <p class="mt-2 text-2xl font-bold text-gray-900">7.2/10</p>
+                        <p class="mt-1 text-sm text-green-600">Good</p>
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-100 text-purple-600 mx-auto">
+                            <i data-feather="activity"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Stress Level</h3>
+                        <p class="mt-2 text-2xl font-bold text-gray-900">3.5/10</p>
+                        <p class="mt-1 text-sm text-green-600">Low</p>
+                    </div>
+                </div>
+
+                <!-- Break Timer & Suggestions -->
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-8">
+                    <!-- Break Timer -->
+                    <div class="break-timer rounded-lg p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-medium text-gray-900">Take a Wellness Break</h3>
+                            <div class="flex items-center">
+                                <i data-feather="clock" class="h-5 w-5 text-green-600 mr-1"></i>
+                                <span class="text-sm text-gray-600">5:00</span>
+                            </div>
+                        </div>
+                        <div class="text-center mb-4">
+                            <div class="text-4xl font-bold text-gray-900 mb-2" id="break-timer">05:00</div>
+                            <p class="text-sm text-gray-600">Recommended break time</p>
+                        </div>
+                        <div class="flex justify-center space-x-3">
+                            <button class="btn-primary text-white px-6 py-2 rounded-md text-sm font-medium" id="start-break">
+                                Start Break
+                            </button>
+                            <button class="border border-gray-300 text-gray-700 px-6 py-2 rounded-md text-sm font-medium hover:bg-gray-50" id="skip-break">
+                                Skip
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Break Suggestions -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Break Suggestions
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                Quick activities to recharge
+                            </p>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <div class="space-y-3">
+                                <div class="nudge-card p-3 bg-gray-50 rounded-lg transition duration-300 ease-in-out">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-green-100 rounded-md p-2">
+                                            <i data-feather="wind" class="h-4 w-4 text-green-600"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm font-medium text-gray-900">Deep Breathing</p>
+                                            <p class="text-xs text-gray-500">2 minutes of focused breathing</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nudge-card p-3 bg-gray-50 rounded-lg transition duration-300 ease-in-out">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-blue-100 rounded-md p-2">
+                                            <i data-feather="trending-up" class="h-4 w-4 text-blue-600"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm font-medium text-gray-900">Quick Stretch</p>
+                                            <p class="text-xs text-gray-500">3-minute desk stretches</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nudge-card p-3 bg-gray-50 rounded-lg transition duration-300 ease-in-out">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-purple-100 rounded-md p-2">
+                                            <i data-feather="droplet" class="h-4 w-4 text-purple-600"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class极="text-sm font-medium text-gray-900">Hydration Break</p>
+                                            <p class="text-xs text-gray-500">Drink a glass of water</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nudge-card p-3 bg-gray-50 rounded-lg transition duration-300 ease-in-out">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 bg-yellow-100 rounded-md p-2">
+                                            <i data-feather="eye" class="h-4 w-4 text-yellow-600"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm font-medium text-gray-900">Eye Rest</p>
+                                            <p class="text-xs text-gray-500">Look away from screen for 2 minutes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Charts -->
+                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-8">
+                    <!-- Daily Wellness Trend -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Daily Wellness Trend
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                7-day wellness score progression
+                            </p>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <canvas id="wellnessChart" height="250"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Break Distribution -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Break Distribution
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                                Break types and frequency
+                            </p>
+                        </div>
+                        <极div class="px-4 py-5 sm:p-6">
+                            <canvas id="breakDistributionChart" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Goals -->
+                <div class="bg-white overflow-hidden shadow rounded-lg mb-8">
+                    <div class="px-4 py-5 sm:px-6 border极-b border-gray-200">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Wellness Goals
+                        </h3>
+                        <p class="mt-1 text-sm text-gray-500">
+                            Track your wellness objectives
+                        </p>
+                    </div>
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <i data-feather="coffee" class="h-8 w-8 text-green-600 mx-auto mb-2"></i>
+                                <h4 class="text-sm font-medium text-gray-900">Daily Breaks</h4>
+                                <p class="text-2xl font-bold text-gray-900">4/6</p>
+                                <p class="text-xs text-gray-500">Target: 6 breaks</p>
+                            </div>
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <i data-feather="clock" class="h-8 w-8 text-blue-600 mx-auto mb-2"></i>
+                                <h4 class="text-sm font-medium text-gray-900">Work Hours</h4>
+                                <p class="text-2xl font-bold text-gray-900">8.2h</p>
+                                <p class="text-xs text-gray-500">Target: ≤8.5h</p>
+                            </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <i data-feather="droplet" class="h-8 w-8 text-purple-600 mx-auto mb-2"></i>
+                                <h4 class="text-sm font-medium text-gray-900">Water Intake</h4>
+                                <p class="text-2xl font-bold text-gray-900">5/8</p>
+                                <p class="text-xs text-gray-500">Target: 8 glasses</p>
+                            </div>
+                            <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                                <i data-feather="moon" class="h-8 w-8 text-yellow-600 mx-auto mb-2"></i>
+                                <h4 class="text-sm font-medium text-gray-900">Sleep Quality</h4>
+                                <p class="text-2xl font-bold text-gray-900">7.5/10</p>
+                                <p class="text-xs text-gray-500">Target: ≥8.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Resources -->
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Wellness Resources
+                        </h3>
+                        <p class="mt-1 text-sm text-gray-500">
+                            Helpful content and tools
+                        </p>
+                    </div>
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <i data-feather="book" class="h-5 w-5 text-green-600 mr-2"></i>
+                                    <h4 class="text-sm font-medium text-gray-900">Mental Health Tips</h4>
+                                </div>
+                                <p class="text-xs text-gray-600 mb-3">Practical strategies for maintaining mental wellbeing at work</p>
+                                <a href="#" class="text-green-600 hover:text-green-800 text-xs font-medium">Read more →</a>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <i data-feather="video" class="h-5 w-5 text-green-600 mr-2"></i>
+                                    <h4 class="text-sm font-medium text-gray-900">Guided Meditations</h4>
+                                </div>
+                                <p class="text-xs text-gray-600 mb-3">Short meditation sessions for work breaks</p>
+                                <a href="#" class="text-green-600 hover:text-green-800 text-xs font-medium">Watch now →</a>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <i data-feather="activity" class="h-5 w-5 text-green-600 mr-2"></i>
+                                    <h4 class="text-sm font-medium text-gray-900">Desk Exercises</h4>
+                                </div>
+                                <p class="text-xs text-gray-600 mb-3">Quick exercises to do at your desk</p>
+                                <a href="#" class="text-green-600 hover:text-green-800 text-xs font-medium">Learn more →</a>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <i data-feather="shield" class="h-5 w-5 text-green-600 mr-2"></i>
+                                    <h4 class="text-sm font-medium text-gray-900">OSHA Compliance</h4>
+                                </div>
+                                <p class="text-xs text-gray-600 mb-3">Understanding workplace wellness regulations</p>
+                                <a href="#" class="text-green-600 hover:text-green-800 text-xs font-medium">Read guide →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Break timer functionality
+        let breakTimer;
+        let breakTimeLeft = 300; // 5 minutes in seconds
+
+        document.getElementById('start-break').addEventListener('click', function() {
+            this.disabled = true;
+            document.getElementById('skip-break').disabled = true;
+            
+            breakTimer = setInterval(function() {
+                breakTimeLeft--;
+                if (breakTimeLeft <= 0) {
+                    clearInterval(breakTimer);
+                    alert("Break time is over! Hope you feel refreshed.");
+                    resetBreakTimer();
+                }
+                updateBreakTimer();
+            }, 1000);
+        });
+
+        document.getElementById('skip-break').addEventListener('click', function() {
+            alert("Remember to take breaks regularly for better productivity and wellbeing!");
+            resetBreakTimer();
+        });
+
+        function updateBreakTimer() {
+            const minutes = Math.floor(breakTimeLeft / 60);
+            const seconds = breakTimeLeft % 60;
+            document.getElementById('break-timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function resetBreakTimer() {
+            clearInterval(breakTimer);
+            breakTimeLeft = 300;
+            updateBreakTimer();
+            document.getElementById('start-break').disabled = false;
+            document.getElementById('skip-break').disabled = false;
+        }
+
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wellness Trend Chart
+            const wellnessCtx = document.getElementById('wellnessChart').getContext('2d');
+            new Chart(wellnessCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Wellness Score',
+                        data: [75, 78, 82, 80, 85, 88, 86],
+                        borderColor: '#38a169',
+                        backgroundColor: 'rgba(56, 161, 105, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 60,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Wellness Score'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Break Distribution Chart
+            const breakDistCtx = document.getElementById('breakDistributionChart').getContext('2d');
+            new Chart(breakDistCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Stretching', 'Hydration', 'Breathing', 'Walking', 'Eye Rest'],
+                    datasets: [{
+                        data: [25, 20, 15, 30, 10],
+                        backgroundColor: [
+                            'rgba(56, 161, 105, 0.8)',
+                            'rgba(66, 153, 225, 0.8)',
+                            'rgba(159, 122, 234, 0.8)',
+                            'rgba(237, 137, 54, 0.8)',
+                            'rgba(229, 62, 62, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Initialize animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        feather.replace();
+    </script>
+</body>
+</html>

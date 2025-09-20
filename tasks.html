@@ -22,6 +22,97 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
         }
+        .btn-add-task {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f97316 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 6s ease infinite;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            box-shadow: 0 18px 35px rgba(99, 102, 241, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .btn-add-task::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(56, 189, 248, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-add-task:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 45px rgba(99, 102, 241, 0.35);
+        }
+        .btn-add-task:hover::before {
+            opacity: 1;
+        }
+        .btn-add-task:focus-visible {
+            outline: 3px solid rgba(236, 72, 153, 0.45);
+            outline-offset: 4px;
+        }
+        .btn-add-task__icon {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+        }
+        .btn-add-task__icon::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: inherit;
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-add-task:hover .btn-add-task__icon::after {
+            opacity: 1;
+        }
+        .btn-add-task__icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .btn-add-task__label {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            line-height: 1.1;
+        }
+        .btn-add-task__label span {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         .nav-link:hover {
             color: #38a169;
         }
@@ -174,9 +265,14 @@
                                     <option>Completed</option>
                                 </select>
                             </div>
-                            <button class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="add-task-btn">
-                                <i data-feather="plus" class="mr-2 h-4 w-4"></i>
-                                Add Task
+                            <button type="button" class="btn-add-task" id="add-task-btn" aria-label="Add Task">
+                                <span class="btn-add-task__icon">
+                                    <i data-feather="plus"></i>
+                                </span>
+                                <span class="btn-add-task__label">
+                                    Add Task
+                                    <span>Capture a new win</span>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -191,7 +287,7 @@
                                 Today's Tasks
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">
-                                Due today, April 15
+                                Due today, April 15, 2025
                             </p>
                         </div>
                         <div class="px-4 py-5 sm:p-6">
@@ -425,15 +521,15 @@
             const STORAGE_UPDATE_KEY = `${STORAGE_KEY}:updated`;
 
             const defaultTasks = [
-                { id: 1, title: "Complete project proposal for client meeting", priority: "high", dueDate: "2024-04-15", dueTime: "14:00", completed: false },
-                { id: 2, title: "Review team's quarterly performance metrics", priority: "medium", dueDate: "2024-04-15", dueTime: "16:30", completed: false },
-                { id: 3, title: "Schedule 1:1 meetings with direct reports", priority: "low", dueDate: "2024-04-15", dueTime: "17:00", completed: false },
-                { id: 4, title: "Prepare presentation for tomorrow's all-hands", priority: "high", dueDate: "2024-04-16", dueTime: "09:00", completed: false },
-                { id: 5, title: "Follow up with marketing on campaign results", priority: "medium", dueDate: "2024-04-16", dueTime: "11:00", completed: false },
-                { id: 6, title: "Update project documentation", priority: "low", dueDate: "2024-04-19", dueTime: "15:00", completed: false },
-                { id: 7, title: "Respond to client emails", priority: "medium", dueDate: "2024-04-15", dueTime: "10:30", completed: true },
-                { id: 8, title: "Team weekly sync meeting", priority: "low", dueDate: "2024-04-15", dueTime: "09:00", completed: true },
-                { id: 9, title: "Review project timeline", priority: "medium", dueDate: "2024-04-14", dueTime: "16:00", completed: true }
+                { id: 1, title: "Complete project proposal for client meeting", priority: "high", dueDate: "2025-04-15", dueTime: "14:00", completed: false },
+                { id: 2, title: "Review team's quarterly performance metrics", priority: "medium", dueDate: "2025-04-15", dueTime: "16:30", completed: false },
+                { id: 3, title: "Schedule 1:1 meetings with direct reports", priority: "low", dueDate: "2025-04-15", dueTime: "17:00", completed: false },
+                { id: 4, title: "Prepare presentation for tomorrow's all-hands", priority: "high", dueDate: "2025-04-16", dueTime: "09:00", completed: false },
+                { id: 5, title: "Follow up with marketing on campaign results", priority: "medium", dueDate: "2025-04-16", dueTime: "11:00", completed: false },
+                { id: 6, title: "Update project documentation", priority: "low", dueDate: "2025-04-19", dueTime: "15:00", completed: false },
+                { id: 7, title: "Respond to client emails", priority: "medium", dueDate: "2025-04-15", dueTime: "10:30", completed: true },
+                { id: 8, title: "Team weekly sync meeting", priority: "low", dueDate: "2025-04-15", dueTime: "09:00", completed: true },
+                { id: 9, title: "Review project timeline", priority: "medium", dueDate: "2025-04-14", dueTime: "16:00", completed: true }
             ];
 
             const breakSuggestions = [

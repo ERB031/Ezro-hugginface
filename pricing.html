@@ -26,6 +26,11 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
+        .popular-card {
+            position: relative;
+            overflow: visible;
+        }
+
         .popular-badge {
             position: absolute;
             top: -12px;
@@ -166,10 +171,8 @@
             </div>
 
             <!-- Team Tier -->
-            <div class="pricing-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 ease-in-out transform scale-105" data-aos="fade-up" data-aos-delay="200">
-                <div class="relative">
-                    <div class="popular-badge">Most popular</div>
-                </div>
+            <div class="pricing-card popular-card bg-white rounded-lg shadow-lg transition duration-300 ease-in-out transform scale-105" data-aos="fade-up" data-aos-delay="200">
+                <div class="popular-badge">Most popular</div>
                 <div class="p-6">
                     <h3 class="text-lg font-medium text-gray-900">Team</h3>
                     <p class="mt-2 text-sm text-gray-500">For growing teams that need more</p>

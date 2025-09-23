@@ -428,36 +428,87 @@
         </div>
     </div>
 
+    <div id="break-overlay" class="hidden fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center px-4">
+        <div class="bg-white max-w-md w-full rounded-3xl p-10 text-center space-y-4 shadow-2xl">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <i data-feather="coffee"></i>
+            </div>
+            <h2 class="text-2xl font-semibold text-gray-900">Enjoy your wellness break</h2>
+            <p class="text-sm text-gray-600">Step away from your screen, stretch, hydrate, or breathe deeply. We'll let you know when it's time to jump back in.</p>
+            <div id="break-overlay-timer" class="text-5xl font-bold text-gray-900">05:00</div>
+            <p class="text-xs text-gray-500">Stay present until the timer ends or wrap early if you absolutely need to.</p>
+            <button id="end-break-now" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500">End break early</button>
+        </div>
+    </div>
+
     <script>
         // Break timer functionality
         let breakTimer;
         let breakTimeLeft = 300; // 5 minutes in seconds
+        const breakOverlay = document.getElementById('break-overlay');
+        const breakOverlayTimer = document.getElementById('break-overlay-timer');
+        const endBreakButton = document.getElementById('end-break-now');
+
+        function showBreakOverlay() {
+            if (!breakOverlay) return;
+            breakOverlay.classList.remove('hidden');
+            breakOverlay.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function hideBreakOverlay() {
+            if (!breakOverlay) return;
+            breakOverlay.classList.add('hidden');
+            breakOverlay.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
 
         document.getElementById('start-break').addEventListener('click', function() {
             this.disabled = true;
             document.getElementById('skip-break').disabled = true;
-            
+            breakTimeLeft = 300;
+            updateBreakTimer();
+            showBreakOverlay();
+
             breakTimer = setInterval(function() {
                 breakTimeLeft--;
+                updateBreakTimer();
                 if (breakTimeLeft <= 0) {
                     clearInterval(breakTimer);
-                    alert("Break time is over! Hope you feel refreshed.");
+                    hideBreakOverlay();
+                    alert('Break time is over! Hope you feel refreshed.');
                     resetBreakTimer();
                 }
-                updateBreakTimer();
             }, 1000);
         });
 
         document.getElementById('skip-break').addEventListener('click', function() {
-            alert("Remember to take breaks regularly for better productivity and wellbeing!");
-            resetBreakTimer();
+            endBreakEarly();
         });
+
+        if (endBreakButton) {
+            endBreakButton.addEventListener('click', function() {
+                endBreakEarly();
+            });
+        }
+
+        function endBreakEarly() {
+            hideBreakOverlay();
+            alert('Remember to take breaks regularly for better productivity and wellbeing!');
+            resetBreakTimer();
+        }
 
         function updateBreakTimer() {
             const minutes = Math.floor(breakTimeLeft / 60);
             const seconds = breakTimeLeft % 60;
-            document.getElementById('break-timer').textContent = 
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const formatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const breakTimerDisplay = document.getElementById('break-timer');
+            if (breakTimerDisplay) {
+                breakTimerDisplay.textContent = formatted;
+            }
+            if (breakOverlayTimer) {
+                breakOverlayTimer.textContent = formatted;
+            }
         }
 
         function resetBreakTimer() {
@@ -466,7 +517,10 @@
             updateBreakTimer();
             document.getElementById('start-break').disabled = false;
             document.getElementById('skip-break').disabled = false;
+            hideBreakOverlay();
         }
+
+        updateBreakTimer();
 
         // Initialize charts
         document.addEventListener('DOMContentLoaded', function() {

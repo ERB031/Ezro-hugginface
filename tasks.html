@@ -22,6 +22,97 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
         }
+        .btn-add-task {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #f97316 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 6s ease infinite;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            box-shadow: 0 18px 35px rgba(99, 102, 241, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .btn-add-task::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(56, 189, 248, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-add-task:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 45px rgba(99, 102, 241, 0.35);
+        }
+        .btn-add-task:hover::before {
+            opacity: 1;
+        }
+        .btn-add-task:focus-visible {
+            outline: 3px solid rgba(236, 72, 153, 0.45);
+            outline-offset: 4px;
+        }
+        .btn-add-task__icon {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+        }
+        .btn-add-task__icon::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: inherit;
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.35), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-add-task:hover .btn-add-task__icon::after {
+            opacity: 1;
+        }
+        .btn-add-task__icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .btn-add-task__label {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            line-height: 1.1;
+        }
+        .btn-add-task__label span {
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
         .nav-link:hover {
             color: #38a169;
         }
@@ -51,7 +142,7 @@
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-sm fixed w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm极:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
@@ -59,12 +150,14 @@
                         <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-6">
                     <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
-                    <a href="pricing.html" class="nav-link border-transparent text极-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
-                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
-                    <a href="calendar.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Calendar</a>
-                    <a href="tasks.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Tasks</a>
+                    <a href="features.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Features</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="about.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    <a href="integrations.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Integrations</a>
+                    <a href="free-assets.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Free Monthly Assets</a>
+                    <a href="dashboard.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     <div class="ml-3 relative">
@@ -77,7 +170,7 @@
                     </div>
                 </div>
                 <div class="-mr-2 flex items-center sm:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2极 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:out极line-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
@@ -88,21 +181,13 @@
         <div class="sm:hidden hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
                 <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</极a>
-                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
-                <a href="calendar.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Calendar</a>
-                <a href="tasks.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Tasks</a>
-                <div class="pt-4 border-t border-gray-200">
-                    <div class="flex items-center px-4">
-                        <div class极="flex-shrink-0">
-                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
-                        </div>
-                        <div class="ml-3">
-                            <div class="text-base font-medium text-gray-800">John Doe</div>
-                            <div class="text-sm font-medium text-gray-500">john@example.com</div>
-                        </div>
-                    </div>
-                </div>
+                <a href="features.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="about.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="integrations.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Integrations</a>
+                <a href="free-assets.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Free Monthly Assets</a>
+                <a href="dashboard.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="dashboard.html" class="btn-primary text-white block px-4 py-2 rounded-md text-base font-medium mx-3 my-2">Get Started</a>
             </div>
         </div>
     </nav>
@@ -119,10 +204,10 @@
                             Dashboard
                         </a>
                         <a href="tasks.html" class="sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                            <i data-feather="check-circle" class="mr-3 h-6 w-6 text-green-500"></极i>
+                            <i data-feather="check-circle" class="mr-3 h-6 w-6 text-green-500"></i>
                             Tasks
                         </a>
-                        <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text极-sm font-medium rounded-md">
+                        <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="calendar" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
                             Calendar
                         </a>
@@ -143,10 +228,10 @@
                 <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
                     <div class="flex items-center">
                         <div>
-                            <img class="极h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4极" alt="User profile">
+                            <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
                         </div>
                         <div class="ml-3">
-                            <p class="text-base font-medium text-gray-极700">John Doe</p>
+                            <p class="text-base font-medium text-gray-700">John Doe</p>
                             <p class="text-sm font-medium text-gray-500">View profile</p>
                         </div>
                     </div>
@@ -174,9 +259,14 @@
                                     <option>Completed</option>
                                 </select>
                             </div>
-                            <button class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="add-task-btn">
-                                <i data-feather="plus" class="mr-2 h-4 w-4"></i>
-                                Add Task
+                            <button type="button" class="btn-add-task" id="add-task-btn" aria-label="Add Task">
+                                <span class="btn-add-task__icon">
+                                    <i data-feather="plus"></i>
+                                </span>
+                                <span class="btn-add-task__label">
+                                    Add Task
+                                    <span>Capture a new win</span>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -191,7 +281,7 @@
                                 Today's Tasks
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">
-                                Due today, April 15
+                                Due today, April 15, 2025
                             </p>
                         </div>
                         <div class="px-4 py-5 sm:p-6">
@@ -210,7 +300,7 @@
                                         <input id="task-2" name="task-2" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
                                         <label for="task-2" class="ml-3 block">
                                             <span class="task-text text-sm font-medium text-gray-700">Review team's quarterly performance metrics</span>
-                                            <span class="text-xs text-gray-500 block mt极-1">Due today at 4:30 PM</span>
+                                            <span class="text-xs text-gray-500 block mt-1">Due today at 4:30 PM</span>
                                         </label>
                                     </div>
                                 </li>
@@ -229,13 +319,13 @@
 
                     <!-- Upcoming Tasks -->
                     <div class="bg-white overflow-hidden shadow rounded-lg">
-                        <div class="px-4 py-5 sm:px极-6 border-b border-gray-200">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
                                 Upcoming Tasks
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">
                                 Due this week
-                            </极p>
+                            </p>
                         </div>
                         <div class="px-4 py-5 sm:p-6">
                             <ul class="divide-y divide-gray-200" id="upcoming-tasks">
@@ -255,7 +345,7 @@
                                             <span class="task-text text-sm font-medium text-gray-700">Follow up with marketing on campaign results</span>
                                             <span class="text-xs text-gray-500 block mt-1">Due tomorrow at 11:00 AM</span>
                                         </label>
-                                    </极div>
+                                    </div>
                                 </li>
                                 <li class="task-item py-4 priority-low">
                                     <div class="flex items-center">
@@ -302,7 +392,7 @@
                                 </li>
                                 <li class="task-item py-4">
                                     <div class="flex items-center">
-                                        <input id="task-9" name="task-9极" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
+                                        <input id="task-9" name="task-9" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" checked>
                                         <label for="task-9" class="ml-3 block">
                                             <span class="task-text text-sm font-medium text-gray-500">Review project timeline</span>
                                             <span class="text-xs text-gray-400 block mt-1">Completed yesterday at 4:00 PM</span>
@@ -325,7 +415,8 @@
                         <div class="ml-4">
                             <h3 class="text-lg font-medium text-gray-900">Wellness Break Suggestion</h3>
                             <p class="mt-1 text-gray-600">You've been working on tasks for a while. Take a 5-minute break to:</p>
-                            <p class="mt-2 font-medium text-green-700">Stretch your legs and take a short walk around the office</p>
+                            <p class="mt-2 font-medium text-green-700" data-break-title>Stretch your legs and take a short walk around the office</p>
+                            <p class="mt-1 text-gray-600" data-break-description>Use this moment to reset your focus before returning to work.</p>
                             <button class="mt-4 btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="take-break-btn">
                                 I'll take this break
                             </button>
@@ -340,28 +431,28 @@
                             <i data-feather="check-circle"></i>
                         </div>
                         <h3 class="mt-4 text-lg font-medium text-gray-900">Total Tasks</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900">9</p>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="total">9</p>
                     </div>
                     <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
-                        <div class="flex items-center justify-center h-12极 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
-                            <i data-feather="check-square"></极i>
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="check-square"></i>
                         </div>
                         <h3 class="mt-4 text-lg font-medium text-gray-900">Completed</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900">3</p>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="completed">3</p>
                     </div>
                     <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
                         <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600 mx-auto">
                             <i data-feather="clock"></i>
                         </div>
                         <h3 class="mt-4 text-lg font-medium text-gray-900">Pending</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900">6</p>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="pending">6</p>
                     </div>
                     <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
                         <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600 mx-auto">
                             <i data-feather="alert-triangle"></i>
                         </div>
                         <h3 class="mt-4 text-lg font-medium text-gray-900">Overdue</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900">0</p>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="overdue">0</p>
                     </div>
                 </div>
             </div>
@@ -394,9 +485,15 @@
                         </select>
                     </div>
                     
-                    <div>
-                        <label for="task-due" class="block text-sm font-medium text-gray-700">Due Date</label>
-                        <input type="date" id="task-due" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="task-due-date" class="block text-sm font-medium text-gray-700">Due Date</label>
+                            <input type="date" id="task-due-date" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div>
+                            <label for="task-due-time" class="block text-sm font-medium text-gray-700">Due Time</label>
+                            <input type="time" id="task-due-time" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
                     </div>
                     
                     <div class="flex space-x-3">
@@ -413,168 +510,398 @@
     </div>
 
     <script>
-        // Task management functionality
-        let tasks = [
-            { id: 1, title: "Complete project proposal for client meeting", due: "2024-04-15T14:00", priority: "high", completed: false },
-            { id: 2, title: "Review team's quarterly performance metrics", due: "2024-04-15T16:30", priority: "medium", completed: false },
-            { id: 3, title: "Schedule 1:1 meetings with direct reports", due: "2024-04-15T17:00", priority: "low", completed: false },
-            { id: 4, title: "Prepare presentation for tomorrow's all-hands", due: "2024-04-16T09:00", priority: "high", completed: false },
-            { id: 5, title: "Follow up with marketing on campaign results", due: "2024-04-16T11:00", priority: "medium", completed: false },
-            { id: 6, title: "Update project documentation", due: "2024-04-19T15:00", priority: "low", completed: false },
-            { id: 7, title: "Respond to client emails", due: "2024-04-15T10:30", priority: "medium", completed: true },
-            { id: 8, title: "Team weekly sync meeting", due: "2024-04-15T09:00", priority: "low", completed: true },
-            { id: 9, title: "Review project timeline", due: "2024-04-14T16:00", priority: "medium", completed: true }
-        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const STORAGE_KEY = 'ezroTasks';
+            const STORAGE_UPDATE_KEY = `${STORAGE_KEY}:updated`;
 
-        // Break suggestions
-        const breakSuggestions = [
-            { title: "Take a hydration break", description: "Drink a glass of water and stretch your arms" },
-            { title: "Eye relaxation", description: "Look away from your screen for 2 minutes and focus on distant objects" },
-            { title: "Deep breathing", description: "Take 5 deep breaths to reset your focus" },
-            { title: "Quick stretch", description: "Stand up and stretch your back and legs for 3 minutes" },
-            { title: "Mindful moment", description: "Close your eyes and focus on your breathing for 2 minutes" }
-        ];
+            const defaultTasks = [
+                { id: 1, title: "Complete project proposal for client meeting", priority: "high", dueDate: "2025-04-15", dueTime: "14:00", completed: false },
+                { id: 2, title: "Review team's quarterly performance metrics", priority: "medium", dueDate: "2025-04-15", dueTime: "16:30", completed: false },
+                { id: 3, title: "Schedule 1:1 meetings with direct reports", priority: "low", dueDate: "2025-04-15", dueTime: "17:00", completed: false },
+                { id: 4, title: "Prepare presentation for tomorrow's all-hands", priority: "high", dueDate: "2025-04-16", dueTime: "09:00", completed: false },
+                { id: 5, title: "Follow up with marketing on campaign results", priority: "medium", dueDate: "2025-04-16", dueTime: "11:00", completed: false },
+                { id: 6, title: "Update project documentation", priority: "low", dueDate: "2025-04-19", dueTime: "15:00", completed: false },
+                { id: 7, title: "Respond to client emails", priority: "medium", dueDate: "2025-04-15", dueTime: "10:30", completed: true },
+                { id: 8, title: "Team weekly sync meeting", priority: "low", dueDate: "2025-04-15", dueTime: "09:00", completed: true },
+                { id: 9, title: "Review project timeline", priority: "medium", dueDate: "2025-04-14", dueTime: "16:00", completed: true }
+            ];
 
-        // Task modal functionality
-        document.getElementById('add-task-btn').addEventListener('click', function() {
-            document.getElementById('task-modal').classList.remove('hidden');
-        });
+            const breakSuggestions = [
+                { title: "Take a hydration break", description: "Drink a glass of water and stretch your arms" },
+                { title: "Eye relaxation", description: "Look away from your screen for 2 minutes and focus on distant objects" },
+                { title: "Deep breathing", description: "Take 5 deep breaths to reset your focus" },
+                { title: "Quick stretch", description: "Stand up and stretch your back and legs for 3 minutes" },
+                { title: "Mindful moment", description: "Close your eyes and focus on your breathing for 2 minutes" }
+            ];
 
-        document.getElementById('cancel-task').addEventListener('click', function() {
-            document.getElementById('task-modal').classList.add('hidden');
-            document.getElementById('task-form').reset();
-        });
-
-        document.getElementById('task-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const title = document.getElementById('task-title').value;
-            const description = document.getElementById('task-description').value;
-            const priority = document.getElementById('task-priority').value;
-            const due = document.getElementById('task-due').value;
-            
-            // Create new task
-            const newTask = {
-                id: tasks.length + 1,
-                title,
-                description,
-                priority,
-                due: due ? new Date(due).toISOString() : null,
-                completed: false
+            const addTaskBtn = document.getElementById('add-task-btn');
+            const taskModal = document.getElementById('task-modal');
+            const cancelTaskBtn = document.getElementById('cancel-task');
+            const taskForm = document.getElementById('task-form');
+            const takeBreakBtn = document.getElementById('take-break-btn');
+            const breakTitleEl = document.querySelector('[data-break-title]');
+            const breakDescriptionEl = document.querySelector('[data-break-description]');
+            const statsElements = {
+                total: document.querySelector('[data-stat="total"]'),
+                completed: document.querySelector('[data-stat="completed"]'),
+                pending: document.querySelector('[data-stat="pending"]'),
+                overdue: document.querySelector('[data-stat="overdue"]')
             };
-            
-            tasks.push(newTask);
-            renderTasks();
-            document.getElementById('task-modal').classList.add('hidden');
-            document.getElementById('task-form').reset();
-            
-            // Show break suggestion after adding a task
-            showBreakSuggestion();
-        });
+            const mobileMenuToggle = document.querySelector('button[aria-controls="mobile-menu"]');
 
-        // Close modal when clicking outside
-        document.getElementById('task-modal').addEventListener('click', function(e) {
-            if (e.target.id === 'task-modal') {
-                document.getElementById('task-modal').classList.add('hidden');
-                document.getElementById('task-form').reset();
+            let tasks = loadTasks();
+
+            if (!localStorage.getItem(STORAGE_KEY)) {
+                saveTasks();
             }
-        });
 
-        // Task completion handling
-        document.addEventListener('change', function(e) {
-            if (e.target.classList.contains('task-checkbox')) {
-                const taskId = parseInt(e.target.id.split('-')[1]);
-                const task = tasks.find(t => t.id === taskId);
-                if (task) {
-                    task.completed = e.target.checked;
-                    renderTasks();
-                    
-                    // Show break suggestion after completing a task
-                    if (task.completed) {
-                        showBreakSuggestion();
+            if (addTaskBtn) {
+                addTaskBtn.addEventListener('click', openModal);
+            }
+
+            if (cancelTaskBtn) {
+                cancelTaskBtn.addEventListener('click', closeModal);
+            }
+
+            if (taskModal) {
+                taskModal.addEventListener('click', (event) => {
+                    if (event.target === taskModal) {
+                        closeModal();
                     }
+                });
+            }
+
+            if (taskForm) {
+                taskForm.addEventListener('submit', handleTaskSubmit);
+            }
+
+            document.addEventListener('change', handleTaskCompletionToggle);
+            document.addEventListener('click', handleTaskDeletion);
+
+            if (takeBreakBtn) {
+                takeBreakBtn.addEventListener('click', () => {
+                    alert('Great! Taking regular breaks improves productivity and wellbeing.');
+                });
+            }
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                    }
+                });
+            }
+
+            renderTasks();
+            showBreakSuggestion();
+
+            AOS.init({ duration: 800, once: true });
+            feather.replace();
+
+            function loadTasks() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed)) {
+                            return parsed.map(normalizeTask);
+                        }
+                    }
+                } catch (error) {
+                    console.warn('Unable to parse stored tasks', error);
+                }
+                return defaultTasks.map(normalizeTask);
+            }
+
+            function normalizeTask(task) {
+                const dueValue = task.due || null;
+                const numericId = Number(task.id);
+                const fallbackId = Date.now() + Math.floor(Math.random() * 1000);
+                const dueTimeValue = typeof task.dueTime === 'string' && task.dueTime.trim() !== ''
+                    ? task.dueTime
+                    : extractTime(dueValue);
+
+                return {
+                    id: Number.isFinite(numericId) && numericId > 0 ? numericId : fallbackId,
+                    title: task.title || 'Untitled Task',
+                    description: task.description || '',
+                    priority: task.priority || 'low',
+                    dueDate: task.dueDate || (dueValue ? dueValue.split('T')[0] : null),
+                    dueTime: dueTimeValue,
+                    completed: Boolean(task.completed)
+                };
+            }
+
+            function extractTime(value) {
+                if (!value || !value.includes('T')) {
+                    return null;
+                }
+                const timeSection = value.split('T')[1];
+                return timeSection ? timeSection.slice(0, 5) : null;
+            }
+
+            function openModal() {
+                if (taskModal) {
+                    taskModal.classList.remove('hidden');
                 }
             }
+
+            function closeModal() {
+                if (taskModal) {
+                    taskModal.classList.add('hidden');
+                }
+                if (taskForm) {
+                    taskForm.reset();
+                }
+            }
+
+            function handleTaskSubmit(event) {
+                event.preventDefault();
+                const titleInput = document.getElementById('task-title');
+                const descriptionInput = document.getElementById('task-description');
+                const priorityInput = document.getElementById('task-priority');
+                const dueDateInput = document.getElementById('task-due-date');
+                const dueTimeInput = document.getElementById('task-due-time');
+
+                const title = titleInput ? titleInput.value.trim() : '';
+                if (!title) {
+                    return;
+                }
+
+                const newTask = {
+                    id: generateTaskId(),
+                    title,
+                    description: descriptionInput ? descriptionInput.value.trim() : '',
+                    priority: priorityInput ? priorityInput.value : 'low',
+                    dueDate: dueDateInput && dueDateInput.value ? dueDateInput.value : null,
+                    dueTime: dueTimeInput && dueTimeInput.value ? dueTimeInput.value : null,
+                    completed: false
+                };
+
+                tasks.push(newTask);
+                saveTasks();
+                renderTasks();
+                closeModal();
+                showBreakSuggestion();
+            }
+
+            function handleTaskCompletionToggle(event) {
+                const target = event.target;
+                if (!(target instanceof HTMLInputElement)) {
+                    return;
+                }
+                if (!target.classList.contains('task-checkbox')) {
+                    return;
+                }
+
+                const taskId = Number(target.dataset.taskId);
+                if (!Number.isFinite(taskId)) {
+                    return;
+                }
+
+                const task = tasks.find((item) => item.id === taskId);
+                if (!task) {
+                    return;
+                }
+
+                task.completed = target.checked;
+                saveTasks();
+                renderTasks();
+
+                if (task.completed) {
+                    showBreakSuggestion();
+                }
+            }
+
+            function handleTaskDeletion(event) {
+                const target = event.target;
+                if (!(target instanceof Element)) {
+                    return;
+                }
+                const deleteButton = target.closest('[data-action="delete-task"]');
+                if (!deleteButton) {
+                    return;
+                }
+
+                const taskId = Number(deleteButton.dataset.taskId);
+                if (!Number.isFinite(taskId)) {
+                    return;
+                }
+
+                tasks = tasks.filter((task) => task.id !== taskId);
+                saveTasks();
+                renderTasks();
+            }
+
+            function renderTasks() {
+                const today = new Date();
+                const todayTasks = tasks.filter((task) => !task.completed && isDueToday(task, today));
+                const upcomingTasks = tasks.filter((task) => !task.completed && !isDueToday(task, today));
+                const completedTasks = tasks.filter((task) => task.completed);
+
+                renderTaskList('today-tasks', todayTasks);
+                renderTaskList('upcoming-tasks', upcomingTasks);
+                renderTaskList('completed-tasks', completedTasks, true);
+
+                updateStats(completedTasks);
+                feather.replace();
+            }
+
+            function renderTaskList(containerId, list, isCompleted = false) {
+                const container = document.getElementById(containerId);
+                if (!container) {
+                    return;
+                }
+
+                container.innerHTML = '';
+
+                if (!list.length) {
+                    container.innerHTML = '<li class="py-4 text-sm text-gray-500">No tasks here yet.</li>';
+                    return;
+                }
+
+                const sortedTasks = [...list].sort(compareByDueDate);
+
+                sortedTasks.forEach((task) => {
+                    const li = document.createElement('li');
+                    const priorityClass = !isCompleted && task.priority ? ` priority-${task.priority}` : '';
+                    li.className = `task-item py-4${priorityClass}`;
+
+                    const dueDetails = formatDueDetails(task);
+                    const descriptionHtml = task.description
+                        ? `<span class="text-xs ${task.completed ? 'text-gray-400' : 'text-gray-500'} block mt-1">${escapeHtml(task.description)}</span>`
+                        : '';
+                    const dueHtml = dueDetails
+                        ? `<span class="text-xs ${task.completed ? 'text-gray-400' : 'text-gray-500'} block mt-1">${dueDetails}</span>`
+                        : '';
+
+                    li.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="task-${task.id}" data-task-id="${task.id}" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" ${task.completed ? 'checked' : ''}>
+                                <label for="task-${task.id}" class="ml-3 block">
+                                    <span class="task-text text-sm font-medium ${task.completed ? 'text-gray-500' : 'text-gray-700'}">${escapeHtml(task.title)}</span>
+                                    ${dueHtml}${descriptionHtml}
+                                </label>
+                            </div>
+                            <button type="button" class="ml-4 text-gray-400 hover:text-red-600 focus:outline-none" data-action="delete-task" data-task-id="${task.id}" aria-label="Delete task">
+                                <i data-feather="trash-2" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                    `;
+
+                    container.appendChild(li);
+                });
+            }
+
+            function formatDueDetails(task) {
+                if (!task.dueDate) {
+                    return 'No due date';
+                }
+
+                const date = createDate(task);
+                if (!date) {
+                    return 'No due date';
+                }
+
+                const dateText = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+                if (task.dueTime) {
+                    const timeText = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    return `Due ${dateText} at ${timeText}`;
+                }
+                return `Due ${dateText}`;
+            }
+
+            function createDate(task) {
+                if (!task.dueDate) {
+                    return null;
+                }
+                if (task.dueTime) {
+                    return new Date(`${task.dueDate}T${task.dueTime}`);
+                }
+                return new Date(`${task.dueDate}T00:00`);
+            }
+
+            function isDueToday(task, referenceDate = new Date()) {
+                const dueDate = createDate(task);
+                if (!dueDate) {
+                    return false;
+                }
+                return dueDate.toDateString() === referenceDate.toDateString();
+            }
+
+            function isOverdue(task) {
+                const dueDate = createDate(task);
+                if (!dueDate) {
+                    return false;
+                }
+                const now = new Date();
+                return dueDate < now && dueDate.toDateString() !== now.toDateString();
+            }
+
+            function compareByDueDate(a, b) {
+                const dateA = createDate(a);
+                const dateB = createDate(b);
+
+                if (!dateA && !dateB) {
+                    return a.id - b.id;
+                }
+                if (!dateA) {
+                    return 1;
+                }
+                if (!dateB) {
+                    return -1;
+                }
+                return dateA - dateB;
+            }
+
+            function updateStats(completedTasks) {
+                if (statsElements.total) {
+                    statsElements.total.textContent = tasks.length;
+                }
+                if (statsElements.completed) {
+                    statsElements.completed.textContent = completedTasks.length;
+                }
+                if (statsElements.pending) {
+                    statsElements.pending.textContent = tasks.filter((task) => !task.completed).length;
+                }
+                if (statsElements.overdue) {
+                    statsElements.overdue.textContent = tasks.filter((task) => !task.completed && isOverdue(task)).length;
+                }
+            }
+
+            function showBreakSuggestion() {
+                if (!breakSuggestions.length || !breakTitleEl || !breakDescriptionEl) {
+                    return;
+                }
+                const randomSuggestion = breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)];
+                breakTitleEl.textContent = randomSuggestion.title;
+                breakDescriptionEl.textContent = randomSuggestion.description;
+            }
+
+            function escapeHtml(value) {
+                return (value || '').replace(/[&<>"']/g, (character) => {
+                    const entities = {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;'
+                    };
+                    return entities[character] || character;
+                });
+            }
+
+            function generateTaskId() {
+                return tasks.reduce((maxId, task) => Math.max(maxId, Number(task.id) || 0), 0) + 1;
+            }
+
+            function saveTasks() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+                localStorage.setItem(STORAGE_UPDATE_KEY, Date.now().toString());
+            }
         });
-
-        // Break suggestion functionality
-        document.getElementById('take-break-btn').addEventListener('click', function() {
-            alert("Great! Taking regular breaks improves productivity and wellbeing.");
-            // Here you would typically start a timer or track the break
-        });
-
-        function showBreakSuggestion() {
-            const randomSuggestion = breakSuggestions[Math.floor(Math.random() * breakSuggestions.length)];
-            const breakElement = document.querySelector('.break-suggestion');
-            breakElement.querySelector('h3').textContent = "Wellness Break Suggestion";
-            breakElement.querySelector('p:nth-of-type(2)').textContent = randomSuggestion.title;
-            breakElement.querySelector('p:nth-of-type(3)').textContent = randomSuggestion.description;
-        }
-
-        function renderTasks() {
-            const today = new Date().toDateString();
-            const todayTasks = tasks.filter(task => {
-                if (task.completed) return false;
-                if (!task.due) return false;
-                return new Date(task.due).toDateString() === today;
-            });
-            
-            const upcomingTasks = tasks.filter(task => {
-                if (task.completed) return false;
-                if (!task.due) return false;
-                return new Date(task.due).toDateString() !== today;
-            });
-            
-            const completedTasks = tasks.filter(task => task.completed);
-            
-            renderTaskList('today-tasks', todayTasks);
-            renderTaskList('upcoming-tasks', upcomingTasks);
-            renderTaskList('completed-tasks', completedTasks);
-            
-            // Update stats
-            document.querySelector('[data-stat="total"]').textContent = tasks.length;
-            document.querySelector('[data-stat="completed"]').textContent = completedTasks.length;
-            document.querySelector('[data-stat="pending"]').textContent = tasks.length - completedTasks.length;
-            document.querySelector('[data-stat="overdue"]').textContent = tasks.filter(task => {
-                if (task.completed) return false;
-                if (!task.due) return false;
-                return new Date(task.due) < new Date();
-            }).length;
-        }
-
-        function renderTaskList(containerId, tasks) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            
-            tasks.forEach(task => {
-                const dueDate = task.due ? new Date(task.due) : null;
-                const dueString = dueDate ? `Due ${dueDate.toLocaleDateString()} at ${dueDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}` : 'No due date';
-                
-                const li = document.createElement('li');
-                li.className = `task-item py-4 priority-${task.priority}`;
-                li.innerHTML = `
-                    <div class="flex items-center">
-                        <input id="task-${task.id}" name="task-${task.id}" type="checkbox" class="task-checkbox h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded" ${task.completed ? 'checked' : ''}>
-                        <label for="task-${task.id}" class="ml-3 block">
-                            <span class="task-text text-sm font-medium ${task.completed ? 'text-gray-500' : 'text-gray-700'}">${task.title}</span>
-                            <span class="text-xs ${task.completed ? 'text-gray-400' : 'text-gray-500'} block mt-1">${dueString}</span>
-                        </label>
-                    </div>
-                `;
-                container.appendChild(li);
-            });
-        }
-
-        // Mobile menu toggle
-        document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Initialize
-        renderTasks();
-        showBreakSuggestion();
-        AOS.init({ duration: 800, once: true });
-        feather.replace();
     </script>
 </body>
 </html>

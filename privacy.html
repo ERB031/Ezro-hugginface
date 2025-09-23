@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Ezro.AI</title>
+    <title>Privacy Policy - Ezro.AI</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -14,13 +14,8 @@
         .gradient-bg {
             background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.25);
+        .content-section h2 {
+            @apply text-2xl font-semibold text-gray-900;
         }
     </style>
 </head>
@@ -68,103 +63,81 @@
     </nav>
 
     <main class="pt-24 pb-16">
-        <section class="gradient-bg py-20">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-                <span class="text-sm uppercase tracking-widest text-green-600 font-semibold">Contact us</span>
-                <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">Let’s collaborate on healthier ways to work</h1>
-                <p class="mt-6 text-lg text-gray-600">Share a few details and we’ll follow up within two business days. We’re excited to learn about your team, your goals, and how we can help.</p>
+        <section class="gradient-bg py-16">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+                <span class="text-sm uppercase tracking-widest text-green-600 font-semibold">Privacy Policy</span>
+                <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">How Ezro.AI Protects Your Data</h1>
+                <p class="mt-6 text-lg text-gray-600">We are committed to giving teams healthier ways to work while safeguarding personal information. This policy explains how we collect, use, share, and secure data across Ezro.AI services.</p>
             </div>
         </section>
 
-        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 grid lg:grid-cols-3 gap-10">
-            <div class="lg:col-span-2 bg-white rounded-3xl shadow p-10" data-aos="fade-right">
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
-                            <input id="firstName" name="firstName" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Jordan">
-                        </div>
-                        <div>
-                            <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
-                            <input id="lastName" name="lastName" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Rivera">
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Work email</label>
-                            <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="you@company.com">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone number</label>
-                            <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="+1 (555) 123-4567">
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="company" class="block text-sm font-medium text-gray-700">Company or organization</label>
-                            <input id="company" name="company" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Acme Co.">
-                        </div>
-                        <div>
-                            <label for="role" class="block text-sm font-medium text-gray-700">Role / Title</label>
-                            <input id="role" name="role" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="People Ops Lead">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="topic" class="block text-sm font-medium text-gray-700">How can we help?</label>
-                        <select id="topic" name="topic" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                            <option>Product tour</option>
-                            <option>Wellness strategy support</option>
-                            <option>Integration questions</option>
-                            <option>Partnership opportunity</option>
-                            <option>Media inquiry</option>
-                            <option>Something else</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Tell us about your team, goals, or questions."></textarea>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <input id="updates" name="updates" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                        <label for="updates" class="text-sm text-gray-600">Keep me posted on Ezro.AI resources and events.</label>
-                    </div>
-                    <button type="submit" class="btn-primary text-white px-6 py-3 rounded-md text-sm font-semibold">Send message</button>
-                    <p id="formMessage" class="text-sm text-green-600 hidden">Thanks for reaching out! We’ll reply shortly.</p>
-                </form>
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 mt-16">
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Who We Are</h2>
+                <p class="mt-3 text-sm text-gray-600">Ezro.AI is designed by Ethan Beller and Nathanial Gaul to help modern teams protect wellbeing without losing momentum. This privacy policy applies to our website, product experiences, integrations, mobile applications, communications, and any other services that display or link to it.</p>
             </div>
-            <div class="bg-white rounded-3xl shadow p-10 space-y-6" data-aos="fade-left">
-                <div>
-                    <h2 class="text-2xl font-semibold text-gray-900">Other ways to connect</h2>
-                    <p class="mt-4 text-sm text-gray-600">Prefer async? Email <a href="mailto:hello@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">hello@ezro.ai</a>. Need our security docs? Request access via <a href="mailto:security@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">security@ezro.ai</a>.</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex items-start gap-3">
-                        <i data-feather="map-pin" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">Ezro.AI is remote-first with anchors in Minneapolis, MN and Brooklyn, NY.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i data-feather="clock" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">Support hours: Monday to Friday, 9am–5pm Central US time.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i data-feather="sliders" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">For urgent customer incidents, page us in the app or via <a href="mailto:support@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">support@ezro.ai</a>.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-green-50 rounded-2xl p-6">
-                    <h3 class="text-lg font-semibold text-gray-900">Looking for support resources?</h3>
-                    <p class="mt-3 text-sm text-gray-600">Check out our self-serve library of rituals, meeting templates, and care guides for teams of every size.</p>
-                    <a href="features.html" class="mt-4 inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700">
-                        Browse resources
-                        <i data-feather="arrow-right"></i>
-                    </a>
-                </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Information We Collect</h2>
+                <p class="mt-3 text-sm text-gray-600">We collect information so we can provide the Ezro.AI experience and support your team. The information falls into the following categories:</p>
+                <ul class="mt-4 space-y-2 text-sm text-gray-600 list-disc pl-5">
+                    <li><span class="font-semibold text-gray-800">Account and profile details</span> such as name, email address, job role, company information, time zone, and team membership.</li>
+                    <li><span class="font-semibold text-gray-800">Usage insights</span> including wellness survey responses, schedules, nudges, tasks, rituals, and interactions you record inside the product.</li>
+                    <li><span class="font-semibold text-gray-800">Device and technical data</span> such as log files, browser type, language, referrer URLs, IP address, and cookie identifiers to help us secure the service and understand performance.</li>
+                    <li><span class="font-semibold text-gray-800">Third-party integration data</span> that you authorize, like calendar events, communication metadata, project updates, or HRIS roster details.</li>
+                </ul>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>How We Use Information</h2>
+                <p class="mt-3 text-sm text-gray-600">We use your information to deliver Ezro.AI features, personalize recommendations, and operate a secure platform. Typical uses include:</p>
+                <ul class="mt-4 space-y-2 text-sm text-gray-600 list-disc pl-5">
+                    <li>Providing focus plans, break reminders, and wellbeing nudges tailored to team needs.</li>
+                    <li>Analyzing aggregated usage to improve workflows, dashboards, and automation.</li>
+                    <li>Facilitating integrations you connect and syncing information between tools.</li>
+                    <li>Responding to support requests, account inquiries, or safety concerns.</li>
+                    <li>Sending service messages, product updates, and optional wellbeing resources.</li>
+                </ul>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Legal Bases and Data Sharing</h2>
+                <p class="mt-3 text-sm text-gray-600">We rely on legitimate interests, consent, contract fulfillment, and compliance with law when processing information. We share data only when it is necessary:</p>
+                <ul class="mt-4 space-y-2 text-sm text-gray-600 list-disc pl-5">
+                    <li>With your organization or teammates according to the roles defined by your admins.</li>
+                    <li>With trusted service providers who help us host, secure, analyze, and deliver Ezro.AI. They must follow our privacy commitments.</li>
+                    <li>If required by law, regulation, or legal process, and only after assessing each request.</li>
+                    <li>During a business transition such as a merger or acquisition, if Ezro.AI is involved.</li>
+                </ul>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>International Transfers</h2>
+                <p class="mt-3 text-sm text-gray-600">Ezro.AI operates with teammates and infrastructure across multiple regions. When we transfer personal data internationally, we use safeguards such as Standard Contractual Clauses or other approved mechanisms to protect your information.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Cookies and Similar Technologies</h2>
+                <p class="mt-3 text-sm text-gray-600">We use cookies, pixels, and analytics services to deliver core functionality and understand how the product is used. You can manage cookie preferences in your browser. Some features may not work correctly if cookies are disabled.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Your Choices and Rights</h2>
+                <p class="mt-3 text-sm text-gray-600">Depending on where you live, you may request access, correction, deletion, restriction, or portability of your personal information. You can update your profile directly within Ezro.AI or contact us for assistance. You can opt out of marketing emails by using the unsubscribe link or adjusting notification preferences.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Data Retention</h2>
+                <p class="mt-3 text-sm text-gray-600">We keep personal information only as long as needed to provide the service, comply with legal obligations, resolve disputes, and enforce our agreements. When data is no longer required, we delete or anonymize it.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Security Practices</h2>
+                <p class="mt-3 text-sm text-gray-600">Ezro.AI uses encryption in transit and at rest, role-based access controls, vulnerability management, and regular reviews of our infrastructure. No system is perfect, so we encourage strong passwords and multi-factor authentication when available.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Children's Privacy</h2>
+                <p class="mt-3 text-sm text-gray-600">Ezro.AI is not directed to children under 16 and we do not intentionally collect information from them. If you believe we have data about a child, contact us so we can delete it.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Changes to This Policy</h2>
+                <p class="mt-3 text-sm text-gray-600">We may update this policy to reflect new features, practices, or legal requirements. When changes are significant, we will notify you through the product or by email. We encourage you to review this page regularly.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-8 content-section" data-aos="fade-up">
+                <h2>Contact Us</h2>
+                <p class="mt-3 text-sm text-gray-600">Questions about this policy? Email <a href="mailto:privacy@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">privacy@ezro.ai</a> or write to Ezro.AI, 2100 Northeast Energy Lane, Minneapolis, MN 55418, USA.</p>
             </div>
         </section>
     </main>
@@ -193,16 +166,16 @@
                 <div>
                     <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
                     <ul class="mt-4 space-y-4">
+                        <li><a href="free-assets.html" class="text-base text-gray-500 hover:text-green-600">Free Monthly Assets</a></li>
                         <li><a href="tasks.html" class="text-base text-gray-500 hover:text-green-600">Help Center</a></li>
                         <li><a href="wellness.html" class="text-base text-gray-500 hover:text-green-600">Community</a></li>
                         <li><a href="analytics.html" class="text-base text-gray-500 hover:text-green-600">Insights</a></li>
-                        <li><a href="calendar.html" class="text-base text-gray-500 hover:text-green-600">Events</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
                     <ul class="mt-4 space-y-4">
-                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Privacy</a></li>
+                        <li><a href="privacy.html" class="text-base text-gray-500 hover:text-green-600">Privacy Policy</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Terms</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Security</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Compliance</a></li>
@@ -225,13 +198,6 @@
         document.querySelector('button[aria-controls="mobile-menu"]').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
-        });
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            formMessage.classList.remove('hidden');
-            contactForm.reset();
         });
         AOS.init({
             duration: 800,

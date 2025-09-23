@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Ezro.AI</title>
+    <title>Events - Ezro.AI</title>
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -14,13 +14,9 @@
         .gradient-bg {
             background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.25);
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(56, 189, 148, 0.12);
         }
     </style>
 </head>
@@ -65,101 +61,63 @@
 
     <main class="pt-24 pb-16">
         <section class="gradient-bg py-20">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-                <span class="text-sm uppercase tracking-widest text-green-600 font-semibold">Contact us</span>
-                <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">Let's collaborate on healthier ways to work</h1>
-                <p class="mt-6 text-lg text-gray-600">Share a few details and we'll follow up within two business days. We're excited to learn about your team, your goals, and how we can help.</p>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-sm uppercase tracking-widest text-green-600 font-semibold">Community events</span>
+                    <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">Gather with the Ezro.AI community in Atlanta</h1>
+                    <p class="mt-6 text-lg text-gray-600">We host regular connection circles, wellness labs, and coworking pop-ups in Atlanta, GA. They're designed for people leaders, makers, and teammates who want to build healthier rhythms together.</p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="contact.html" class="btn-primary text-white px-6 py-3 rounded-md text-base font-semibold">Ask about the next event</a>
+                        <a href="mailto:hello@ezro.ai" class="inline-flex items-center px-6 py-3 border border-green-500 text-green-600 rounded-md text-base font-semibold hover:bg-green-50">Email hello@ezro.ai</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-10 space-y-6" data-aos="fade-left">
+                    <div class="event-card bg-green-50 rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-900">What to expect</h3>
+                        <p class="mt-3 text-sm text-gray-600">Small group sessions, guided rituals, local food, and practical takeaways you can bring back to your team.</p>
+                    </div>
+                    <div class="event-card bg-white border border-green-100 rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-900">Where we meet</h3>
+                        <p class="mt-3 text-sm text-gray-600">Rotating venues across Midtown and Old Fourth Ward Atlanta with easy transit access.</p>
+                    </div>
+                    <div class="event-card bg-white border border-green-100 rounded-2xl p-6">
+                        <h3 class="text-xl font-semibold text-gray-900">Who joins</h3>
+                        <p class="mt-3 text-sm text-gray-600">People operations leaders, founders, engineers, and community organizers invested in sustainable work cultures.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 grid lg:grid-cols-3 gap-10">
-            <div class="lg:col-span-2 bg-white rounded-3xl shadow p-10" data-aos="fade-right">
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="firstName" class="block text-sm font-medium text-gray-700">First name</label>
-                            <input id="firstName" name="firstName" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Jordan">
-                        </div>
-                        <div>
-                            <label for="lastName" class="block text-sm font-medium text-gray-700">Last name</label>
-                            <input id="lastName" name="lastName" type="text" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Rivera">
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Work email</label>
-                            <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="you@company.com">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone number</label>
-                            <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="+1 (555) 123-4567">
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="company" class="block text-sm font-medium text-gray-700">Company or organization</label>
-                            <input id="company" name="company" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Acme Co.">
-                        </div>
-                        <div>
-                            <label for="role" class="block text-sm font-medium text-gray-700">Role / Title</label>
-                            <input id="role" name="role" type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="People Ops Lead">
-                        </div>
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 space-y-12" data-aos="fade-up">
+            <div class="bg-white rounded-3xl shadow p-10">
+                <h2 class="text-3xl font-bold text-gray-900">Stay plugged in</h2>
+                <p class="mt-4 text-sm text-gray-600">Join the interest list and we'll share dates, agendas, and ways to contribute—whether you want to facilitate a session or just show up and recharge.</p>
+                <form class="mt-8 grid gap-6 lg:grid-cols-2">
+                    <div>
+                        <label for="events-name" class="block text-xs font-semibold text-gray-500 uppercase">Name</label>
+                        <input id="events-name" type="text" required class="mt-2 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500" placeholder="Jordan Rivera">
                     </div>
                     <div>
-                        <label for="topic" class="block text-sm font-medium text-gray-700">How can we help?</label>
-                        <select id="topic" name="topic" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                            <option>Product tour</option>
-                            <option>Wellness strategy support</option>
-                            <option>Integration questions</option>
-                            <option>Partnership opportunity</option>
-                            <option>Media inquiry</option>
-                            <option>Something else</option>
-                        </select>
+                        <label for="events-email" class="block text-xs font-semibold text-gray-500 uppercase">Work email</label>
+                        <input id="events-email" type="email" required class="mt-2 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500" placeholder="you@company.com">
                     </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="5" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="Tell us about your team, goals, or questions."></textarea>
+                    <div class="lg:col-span-2">
+                        <label for="events-note" class="block text-xs font-semibold text-gray-500 uppercase">How can we support you?</label>
+                        <textarea id="events-note" rows="4" class="mt-2 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-green-500 focus:ring-green-500" placeholder="Tell us what kind of experiences you're excited about."></textarea>
                     </div>
-                    <div class="flex items-start gap-3">
-                        <input id="updates" name="updates" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                        <label for="updates" class="text-sm text-gray-600">Keep me posted on Ezro.AI resources and events.</label>
+                    <div class="lg:col-span-2 flex flex-wrap items-center gap-4">
+                        <button type="submit" class="btn-primary text-white px-6 py-3 rounded-md text-base font-semibold">Join the list</button>
+                        <p id="events-confirm" class="hidden text-sm text-green-600">Thanks! We'll follow up with Atlanta dates soon.</p>
                     </div>
-                    <button type="submit" class="btn-primary text-white px-6 py-3 rounded-md text-sm font-semibold">Send message</button>
-                    <p id="formMessage" class="text-sm text-green-600 hidden">Thanks for reaching out! We'll reply shortly.</p>
                 </form>
             </div>
-            <div class="bg-white rounded-3xl shadow p-10 space-y-6" data-aos="fade-left">
-                <div>
-                    <h2 class="text-2xl font-semibold text-gray-900">Other ways to connect</h2>
-                    <p class="mt-4 text-sm text-gray-600">Prefer async? Email <a href="mailto:hello@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">hello@ezro.ai</a>. Need our security docs? Request access via <a href="mailto:security@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">security@ezro.ai</a>.</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex items-start gap-3">
-                        <i data-feather="map-pin" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">Ezro.AI is remote-first with anchors in Atlanta, GA and Brooklyn, NY.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i data-feather="clock" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">Support hours: Monday to Friday, 9am–5pm Central US time.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i data-feather="sliders" class="w-5 h-5 text-green-500"></i>
-                        <div>
-                            <p class="text-sm text-gray-600">For urgent customer incidents, page us in the app or via <a href="mailto:support@ezro.ai" class="text-green-600 font-semibold hover:text-green-700">support@ezro.ai</a>.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-green-50 rounded-2xl p-6">
-                    <h3 class="text-lg font-semibold text-gray-900">Looking for support resources?</h3>
-                    <p class="mt-3 text-sm text-gray-600">Check out our self-serve library of rituals, meeting templates, and care guides for teams of every size.</p>
-                    <a href="features.html" class="mt-4 inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700">
-                        Browse resources
-                        <i data-feather="arrow-right"></i>
-                    </a>
+
+            <div class="bg-white rounded-3xl shadow p-10" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900">Bring Ezro.AI to your space</h2>
+                <p class="mt-4 text-sm text-gray-600">We love partnering with coworking spaces, local businesses, and community groups. If you'd like to co-host a wellness lab or ritual circle, reach out and we'll make it happen.</p>
+                <div class="mt-6 flex flex-wrap gap-4">
+                    <a href="contact.html" class="btn-primary text-white px-6 py-3 rounded-md text-base font-semibold">Start a conversation</a>
+                    <a href="mailto:events@ezro.ai" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700">events@ezro.ai</a>
                 </div>
             </div>
         </section>
@@ -174,7 +132,7 @@
                         <li><a href="features.html" class="text-base text-gray-500 hover:text-green-600">Features</a></li>
                         <li><a href="integrations.html" class="text-base text-gray-500 hover:text-green-600">Integrations</a></li>
                         <li><a href="pricing.html" class="text-base text-gray-500 hover:text-green-600">Pricing</a></li>
-                        <li><a href="dashboard.html" class="text-base text-gray-500 hover:text-green-600">Platform</a></li>
+                        <li><a href="updates.html" class="text-base text-gray-500 hover:text-green-600">Updates</a></li>
                     </ul>
                 </div>
                 <div>
@@ -183,23 +141,22 @@
                         <li><a href="about.html" class="text-base text-gray-500 hover:text-green-600">About</a></li>
                         <li><a href="blog.html" class="text-base text-gray-500 hover:text-green-600">Blog</a></li>
                         <li><a href="events.html" class="text-base text-gray-500 hover:text-green-600">Events</a></li>
-                        <li><a href="careers.html" class="text-base text-gray-500 hover:text-green-600">Careers</a></li>
                         <li><a href="contact.html" class="text-base text-gray-500 hover:text-green-600">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
                     <ul class="mt-4 space-y-4">
+                        <li><a href="free-assets.html" class="text-base text-gray-500 hover:text-green-600">Free Monthly Assets</a></li>
                         <li><a href="tasks.html" class="text-base text-gray-500 hover:text-green-600">Help Center</a></li>
                         <li><a href="wellness.html" class="text-base text-gray-500 hover:text-green-600">Community</a></li>
                         <li><a href="analytics.html" class="text-base text-gray-500 hover:text-green-600">Insights</a></li>
-                        <li><a href="calendar.html" class="text-base text-gray-500 hover:text-green-600">Events</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
                     <ul class="mt-4 space-y-4">
-                        <li><a href="privacy.html" class="text-base text-gray-500 hover:text-green-600">Privacy</a></li>
+                        <li><a href="privacy.html" class="text-base text-gray-500 hover:text-green-600">Privacy Policy</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Terms</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Security</a></li>
                         <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Compliance</a></li>
@@ -223,13 +180,6 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            formMessage.classList.remove('hidden');
-            contactForm.reset();
-        });
         AOS.init({
             duration: 800,
             once: true
@@ -238,10 +188,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-

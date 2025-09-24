@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -267,7 +267,59 @@
                         </div>
                     </div>
                 </div>
+                <!-- Break Suggestion -->
+                <div class="mt-6 mb-6 break-suggestion rounded-lg p-6">
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i data-feather="heart" class="h-6 w-6 text-green-600"></i>
+                            </div>
+                        </div>
+                        <div class="sm:flex-1">
+                            <h3 class="text-lg font-medium text-gray-900">Wellness Break Suggestion</h3>
+                            <p class="mt-1 text-gray-600">You've been working on tasks for a while. Take a 5-minute break to:</p>
+                            <ul class="mt-3 space-y-1 text-sm text-gray-700 list-disc list-inside">
+                                <li class="font-semibold text-green-700" data-break-title>Mindful moment</li>
+                                <li data-break-description>Close your eyes and focus on your breathing for 2 minutes</li>
+                            </ul>
+                            <button class="mt-4 btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="take-break-btn">
+                                I'll take this break
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Task Stats -->
+                <div class="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-4">
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="check-circle"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Total Tasks</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="total">9</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
+                            <i data-feather="check-square"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Completed</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="completed">3</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600 mx-auto">
+                            <i data-feather="clock"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Pending</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="pending">6</p>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600 mx-auto">
+                            <i data-feather="alert-triangle"></i>
+                        </div>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Overdue</h3>
+                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="overdue">0</p>
+                    </div>
+                </div>
                 <!-- Task Lists -->
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
                     <!-- Today's Tasks -->
@@ -400,57 +452,7 @@
                     </div>
                 </div>
 
-                <!-- Break Suggestion -->
-                <div class="mt-6 break-suggestion rounded-lg p-6">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                                <i data-feather="heart" class="h-6 w-6 text-green-600"></i>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Wellness Break Suggestion</h3>
-                            <p class="mt-1 text-gray-600">You've been working on tasks for a while. Take a 5-minute break to:</p>
-                            <p class="mt-2 font-medium text-green-700" data-break-title>Stretch your legs and take a short walk around the office</p>
-                            <p class="mt-1 text-gray-600" data-break-description>Use this moment to reset your focus before returning to work.</p>
-                            <button class="mt-4 btn-primary text-white px-4 py-2 rounded-md text-sm font-medium" id="take-break-btn">
-                                I'll take this break
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Task Stats -->
-                <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-4">
-                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
-                            <i data-feather="check-circle"></i>
-                        </div>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Total Tasks</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="total">9</p>
-                    </div>
-                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mx-auto">
-                            <i data-feather="check-square"></i>
-                        </div>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Completed</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="completed">3</p>
-                    </div>
-                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-100 text-yellow-600 mx-auto">
-                            <i data-feather="clock"></i>
-                        </div>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Pending</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="pending">6</p>
-                    </div>
-                    <div class="bg-white overflow-hidden shadow rounded-lg p-6 text-center">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-100 text-red-600 mx-auto">
-                            <i data-feather="alert-triangle"></i>
-                        </div>
-                        <h3 class="mt-4 text-lg font-medium text-gray-900">Overdue</h3>
-                        <p class="mt-2 text-3xl font-bold text-gray-900" data-stat="overdue">0</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -523,10 +525,6 @@
             ];
 
             const breakSuggestions = [
-                { title: "Take a hydration break", description: "Drink a glass of water and stretch your arms" },
-                { title: "Eye relaxation", description: "Look away from your screen for 2 minutes and focus on distant objects" },
-                { title: "Deep breathing", description: "Take 5 deep breaths to reset your focus" },
-                { title: "Quick stretch", description: "Stand up and stretch your back and legs for 3 minutes" },
                 { title: "Mindful moment", description: "Close your eyes and focus on your breathing for 2 minutes" }
             ];
 
@@ -901,4 +899,3 @@
     </script>
 </body>
 </html>
-

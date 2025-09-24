@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Ezro.AI</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 30px rgba(56, 189, 148, 0.12);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <nav class="bg-white shadow-sm fixed w-full z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="text-green-500 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-6">
+                    <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="features.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Features</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="free-assets.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Free Monthly Assets</a>
+                    <a href="dashboard.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Demo</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="dashboard.html" class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium">Get Started</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="features.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="free-assets.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Free Monthly Assets</a>
+                <a href="dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Demo</a>
+                <a href="dashboard.html" class="btn-primary text-white block px-4 py-2 rounded-md text-base font-medium mx-3 my-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+        <section class="gradient-bg py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+                <span class="text-sm uppercase tracking-widest text-green-600 font-semibold">Help Center</span>
+                <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl">Find the answers you need, faster</h1>
+                <p class="mt-6 text-lg text-gray-600">Browse guides, walkthroughs, and best practices curated by our people science team. Everything is organized so you can keep your teams supported without slowing down.</p>
+                <form class="mt-10">
+                    <div class="relative max-w-2xl mx-auto">
+                        <input type="search" aria-label="Search help articles" placeholder="Search articles, workflows, or topics" class="w-full rounded-2xl border border-gray-200 px-6 py-4 text-base shadow-sm focus:border-green-500 focus:ring-green-500">
+                        <button type="submit" class="absolute right-3 top-3 inline-flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500">
+                            <i data-feather="search" class="h-4 w-4"></i>
+                            Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16" data-aos="fade-up">
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="life-buoy" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Getting Started</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Launch Ezro.AI in under a week. Learn how to invite teammates, configure rituals, and roll out your first wellbeing campaign.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Implementation checklist</a></li>
+                        <li><a href="#" class="hover:text-green-700">Launch email templates</a></li>
+                        <li><a href="#" class="hover:text-green-700">Workspace roles overview</a></li>
+                    </ul>
+                </article>
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="sliders" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Programs & Rituals</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Customize recommended nudges, weekly rituals, and wellbeing experiences that keep teams grounded and energized.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Designing a rest-first cadence</a></li>
+                        <li><a href="#" class="hover:text-green-700">Wellness lab facilitator guide</a></li>
+                        <li><a href="#" class="hover:text-green-700">Measuring ritual impact</a></li>
+                    </ul>
+                </article>
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="pie-chart" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Analytics & Reporting</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Turn participation data into meaningful actions. Understand dashboards, wellbeing scores, and pulse survey trends.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Wellbeing score methodology</a></li>
+                        <li><a href="#" class="hover:text-green-700">Exporting raw insights</a></li>
+                        <li><a href="#" class="hover:text-green-700">Sharing progress with leadership</a></li>
+                    </ul>
+                </article>
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="users" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Employees & Access</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Manage provisioning, privacy, and custom audiences so everyone receives the right care at the right time.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Provisioning from HRIS</a></li>
+                        <li><a href="#" class="hover:text-green-700">Configuring data retention</a></li>
+                        <li><a href="#" class="hover:text-green-700">Employee privacy commitments</a></li>
+                    </ul>
+                </article>
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="zap" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Automation & Integrations</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Connect Ezro.AI with your communication stack, HR tools, and productivity suites to automate the work.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Slack & Teams playbooks</a></li>
+                        <li><a href="#" class="hover:text-green-700">SCIM provisioning setup</a></li>
+                        <li><a href="#" class="hover:text-green-700">Webhook recipes</a></li>
+                    </ul>
+                </article>
+                <article class="card-hover bg-white rounded-2xl p-6 shadow">
+                    <div class="flex items-center gap-3">
+                        <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <i data-feather="lock" class="h-5 w-5"></i>
+                        </span>
+                        <h3 class="text-lg font-semibold text-gray-900">Security & Compliance</h3>
+                    </div>
+                    <p class="mt-3 text-sm text-gray-600">Review policies, data controls, and certifications that keep employees protected and leadership confident.</p>
+                    <ul class="mt-4 space-y-2 text-sm text-green-600">
+                        <li><a href="#" class="hover:text-green-700">Data residency FAQ</a></li>
+                        <li><a href="#" class="hover:text-green-700">SOC2 and HIPAA overview</a></li>
+                        <li><a href="#" class="hover:text-green-700">Incident response playbook</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 grid gap-10 lg:grid-cols-2" data-aos="fade-up">
+            <div class="bg-white rounded-3xl shadow p-10">
+                <h2 class="text-2xl font-semibold text-gray-900">Top resources this month</h2>
+                <p class="mt-3 text-sm text-gray-600">See what other people teams are reading to support healthy, high-performing cultures.</p>
+                <ul class="mt-6 space-y-4 text-sm text-gray-700">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-semibold">1</span>
+                        <div>
+                            <p class="font-semibold text-gray-900">Building psychological safety in hybrid teams</p>
+                            <p class="text-gray-500">Workshop agenda, facilitator notes, and follow-up scripts.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-semibold">2</span>
+                        <div>
+                            <p class="font-semibold text-gray-900">Rewriting performance reviews with wellbeing data</p>
+                            <p class="text-gray-500">Bring voice-of-employee signals into your talent cycles.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-600 text-xs font-semibold">3</span>
+                        <div>
+                            <p class="font-semibold text-gray-900">Crafting inclusive time-off rituals</p>
+                            <p class="text-gray-500">Templates for meeting-free days, care stipends, and debriefs.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-white rounded-3xl shadow p-10">
+                <h2 class="text-2xl font-semibold text-gray-900">Need more hands-on support?</h2>
+                <p class="mt-3 text-sm text-gray-600">Our customer experience team is made up of former HR, L&D, and operations leaders. Here’s how to reach us.</p>
+                <div class="mt-6 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="mail" class="h-5 w-5 text-green-600"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Email us</p>
+                            <p class="text-sm text-gray-600">hello@ezro.ai for product help, security@ezro.ai for compliance questions.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-feather="message-circle" class="h-5 w-5 text-green-600"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Join office hours</p>
+                            <p class="text-sm text-gray-600">Weekly group sessions covering onboarding, rituals, and leadership coaching.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-feather="headphones" class="h-5 w-5 text-green-600"></i>
+                        <div>
+                            <p class="font-semibold text-gray-900">Priority support</p>
+                            <p class="text-sm text-gray-600">Available for enterprise SLAs. Page us directly in the Ezro app for urgent needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="contact.html" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500">
+                    Talk with our team
+                    <i data-feather="arrow-right" class="h-4 w-4"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white mt-24">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Product</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="features.html" class="text-base text-gray-500 hover:text-green-600">Features</a></li>
+                        <li><a href="pricing.html" class="text-base text-gray-500 hover:text-green-600">Pricing</a></li>
+                        <li><a href="integrations.html" class="text-base text-gray-500 hover:text-green-600">Integrations</a></li>
+                        <li><a href="updates.html" class="text-base text-gray-500 hover:text-green-600">Updates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="about.html" class="text-base text-gray-500 hover:text-green-600">About</a></li>
+                        <li><a href="blog.html" class="text-base text-gray-500 hover:text-green-600">Blog</a></li>
+                        <li><a href="careers.html" class="text-base text-gray-500 hover:text-green-600">Careers</a></li>
+                        <li><a href="contact.html" class="text-base text-gray-500 hover:text-green-600">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="free-assets.html" class="text-base text-gray-500 hover:text-green-600">Free Monthly Assets</a></li>
+                        <li><a href="help-center.html" class="text-base text-gray-500 hover:text-green-600">Help Center</a></li>
+                        <li><a href="community.html" class="text-base text-gray-500 hover:text-green-600">Community</a></li>
+                        <li><a href="events.html" class="text-base text-gray-500 hover:text-green-600">Events</a></li>
+                        <li><a href="analytics.html" class="text-base text-gray-500 hover:text-green-600">Insights</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="privacy.html" class="text-base text-gray-500 hover:text-green-600">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Security</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-green-600">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-green-600"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true"><path d="M2.5 3h3.4l5.6 7 6.4-7h3.5l-8 9 8 9h-3.5l-6-7.2-6.4 7.2H2.5l8-9z"/></svg></a>
+                    <a href="#" class="text-gray-400 hover:text-green-600"><i data-feather="facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-600"><i data-feather="linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-600"><i data-feather="instagram"></i></a>
+                </div>
+                <p class="mt-8 text-base text-gray-500 md:mt-0 md:order-1">&copy; 2025 Ezro.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('button[aria-controls="mobile-menu"]');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function () {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                    }
+                });
+            }
+
+            if (window.AOS) {
+                AOS.init({
+                    duration: 800,
+                    once: true
+                });
+            }
+
+            if (window.feather) {
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>

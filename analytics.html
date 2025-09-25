@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,35 @@
         .sidebar-item.active {
             background-color: #e6fffa;
             border-left: 4px solid #38a169;
+        }
+        .sidebar {
+            transition: width 0.3s ease;
+        }
+        .sidebar.collapsed {
+            width: 4rem;
+        }
+        .sidebar.collapsed .sidebar-text,
+        .sidebar.collapsed .sidebar-footer-text,
+        .sidebar.collapsed .sidebar-section-label,
+        .sidebar.collapsed .sidebar-item span,
+        .sidebar.collapsed .sidebar-link span {
+            display: none;
+        }
+        .sidebar.collapsed .sidebar-item,
+        .sidebar.collapsed .sidebar-link {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar.collapsed .sidebar-item i,
+        .sidebar.collapsed .sidebar-link i {
+            margin-right: 0;
+        }
+        .sidebar-toggle {
+            transition: transform 0.3s ease;
+        }
+        .sidebar-toggle.rotate-180 {
+            transform: rotate(180deg);
         }
         .stat-card:hover {
             transform: translateY(-2px);
@@ -99,36 +128,42 @@
     <div class="flex pt-16">
         <!-- Sidebar -->
         <div class="hidden md:flex md:flex-shrink-0">
-            <div class="sidebar flex flex-col w-64 border-r border-gray-200 bg-white">
+            <div id="sidebar" class="sidebar flex flex-col w-64 border-r border-gray-200 bg-white">
                 <div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="sidebar-header flex items-center justify-between px-3 pb-3">
+                        <p class="sidebar-section-label text-xs font-semibold text-gray-500 uppercase tracking-wider">Navigation</p>
+                        <button type="button" id="sidebarToggle" class="sidebar-toggle text-gray-500 hover:text-green-600 focus:outline-none transform transition-transform duration-300" aria-expanded="true" aria-label="Toggle sidebar">
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                    </div>
                     <div class="flex-1 px-3 space-y-1">
                         <a href="dashboard.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="home" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Dashboard
+                            <span class="sidebar-text">Dashboard</span>
                         </a>
                         <a href="tasks.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="check-circle" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Tasks
+                            <span class="sidebar-text">Tasks</span>
                         </a>
                         <a href="calendar.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="calendar" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Calendar
+                            <span class="sidebar-text">Calendar</span>
                         </a>
                         <a href="analytics.html" class="sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="bar-chart-2" class="mr-3 h-6 w-6 text-green-500"></i>
-                            Analytics
+                            <span class="sidebar-text">Analytics</span>
                         </a>
                         <a href="wellness.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="heart" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Wellness
+                            <span class="sidebar-text">Wellness</span>
                         </a>
                         <a href="games-rewards.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md whitespace-nowrap">
                             <i data-feather="award" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Games &amp; Rewards
+                            <span class="sidebar-text">Games &amp; Rewards</span>
                         </a>
                         <a href="settings.html" class="sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             <i data-feather="settings" class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
-                            Settings
+                            <span class="sidebar-text">Settings</span>
                         </a>
                     </div>
                 </div>
@@ -417,6 +452,17 @@
     <script>
         // Initialize charts
         document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+
+            if (sidebar && sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    const isCollapsed = sidebar.classList.toggle('collapsed');
+                    sidebarToggle.setAttribute('aria-expanded', (!isCollapsed).toString());
+                    sidebarToggle.classList.toggle('rotate-180', isCollapsed);
+                });
+            }
+
             // Work Hours Trend Chart
             const hoursCtx = document.getElementById('hoursChart').getContext('2d');
             new Chart(hoursCtx, {

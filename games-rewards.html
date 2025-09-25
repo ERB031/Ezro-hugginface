@@ -78,6 +78,65 @@
             box-shadow: 0 4px 6px rgba(72, 187, 120, 0.1);
             border: 3px solid white;
         }
+        .badge-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .badge-card {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 12px 24px rgba(148, 163, 184, 0.18);
+            border: 1px solid rgba(226, 232, 240, 0.7);
+        }
+        .badge-card__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            margin-right: 1rem;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+        .badge-card__details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+        .badge-card__details p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #475569;
+        }
+        .badge-card__icon--calm {
+            background: linear-gradient(160deg, #bfdbfe, #dbeafe);
+            color: #1d4ed8;
+        }
+        .badge-card__icon--growth {
+            background: linear-gradient(160deg, #bbf7d0, #dcfce7);
+            color: #047857;
+        }
+        .badge-card__icon--balance {
+            background: linear-gradient(160deg, #fde68a, #fef3c7);
+            color: #c2410c;
+        }
+        .badge-card__icon--focus {
+            background: linear-gradient(160deg, #fbcfe8, #fce7f3);
+            color: #be185d;
+        }
+        .badge-card__icon--serene {
+            background: linear-gradient(160deg, #ddd6fe, #ede9fe);
+            color: #5b21b6;
+        }
+        .badge-card__icon--renew {
+            background: linear-gradient(160deg, #bae6fd, #e0f2fe);
+            color: #0c4a6e;
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
@@ -320,31 +379,61 @@
                     <section class="bg-white overflow-hidden shadow rounded-lg">
                         <div class="px-6 py-5 sm:px-8">
                             <h3 class="text-xl font-semibold text-gray-900">Badge Name Moodboard</h3>
-                            <p class="mt-2 text-sm text-gray-600">A playful mix of titles we can award as these mechanics roll out:</p>
-                            <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Downtime Defender</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Earned by guarding quiet hours all week.</p>
+                            <p class="mt-2 text-sm text-gray-600">Soft gradients, iconography, and clear descriptions keep recognition delightful and calm.</p>
+                            <div class="mt-6 badge-grid">
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--calm">
+                                        <i data-feather="moon"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Quiet Hours Guardian</h4>
+                                        <p>Protects evening downtime five nights in a row.</p>
+                                    </div>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Hydration Hero</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Unlocked after a day packed with Break Buddy wins.</p>
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--growth">
+                                        <i data-feather="droplet"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Hydration Hero</h4>
+                                        <p>Logs restorative breaks and hydration resets across the day.</p>
+                                    </div>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Mindful Maverick</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Celebrate consistent reflection and reset rituals.</p>
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--balance">
+                                        <i data-feather="sunrise"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Balance Trailblazer</h4>
+                                        <p>Charts a full week of aligned workload and wellbeing.</p>
+                                    </div>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Quiet Hours Champion</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Awarded for a spotless late-night inbox streak.</p>
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--focus">
+                                        <i data-feather="target"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Focus Flow Finisher</h4>
+                                        <p>Completes mindful focus sessions without context switching.</p>
+                                    </div>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Balance Trailblazer</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Recognizes steady progress toward a greener balance score.</p>
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--serene">
+                                        <i data-feather="feather"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Mindful Maverick</h4>
+                                        <p>Shares reflections three evenings in a row to close the day with intention.</p>
+                                    </div>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Future Self VIP</h4>
-                                    <p class="mt-2 text-sm text-gray-600">For planners who keep tomorrow's calendar clear and kind.</p>
+                                <article class="badge-card">
+                                    <div class="badge-card__icon badge-card__icon--renew">
+                                        <i data-feather="refresh-cw"></i>
+                                    </div>
+                                    <div class="badge-card__details">
+                                        <h4>Future Self VIP</h4>
+                                        <p>Blocks buffer time before the calendar fills, gifting tomorrow less rush.</p>
+                                    </div>
                                 </article>
                             </div>
                         </div>

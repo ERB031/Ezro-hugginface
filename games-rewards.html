@@ -137,6 +137,59 @@
             background: linear-gradient(160deg, #bae6fd, #e0f2fe);
             color: #0c4a6e;
         }
+        .pulse-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        .pulse-card {
+            border-radius: 18px;
+            padding: 1.5rem;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(148, 163, 184, 0.18);
+            border: 1px solid rgba(226, 232, 240, 0.65);
+        }
+        .pulse-card__title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+        .pulse-card__description {
+            font-size: 0.9rem;
+            color: #475569;
+            margin: 0;
+        }
+        .pulse-card--breeze {
+            background: linear-gradient(160deg, rgba(219, 234, 254, 0.9), rgba(243, 244, 255, 0.95));
+        }
+        .pulse-card--mint {
+            background: linear-gradient(160deg, rgba(217, 249, 211, 0.9), rgba(240, 253, 244, 0.95));
+        }
+        .pulse-card--sunrise {
+            background: linear-gradient(160deg, rgba(254, 249, 195, 0.9), rgba(255, 241, 242, 0.95));
+        }
+        .pulse-card--lavender {
+            background: linear-gradient(160deg, rgba(237, 233, 254, 0.9), rgba(245, 243, 255, 0.95));
+        }
+        .pulse-card--peach {
+            background: linear-gradient(160deg, rgba(254, 226, 226, 0.9), rgba(255, 247, 237, 0.95));
+        }
+        .pulse-card--aqua {
+            background: linear-gradient(160deg, rgba(224, 242, 254, 0.9), rgba(236, 254, 255, 0.95));
+        }
+        .pulse-card--rose {
+            background: linear-gradient(160deg, rgba(253, 242, 248, 0.9), rgba(254, 245, 247, 0.95));
+        }
+        .pulse-card--sage {
+            background: linear-gradient(160deg, rgba(226, 239, 218, 0.9), rgba(236, 253, 245, 0.95));
+        }
+        .pulse-card--sky {
+            background: linear-gradient(160deg, rgba(224, 242, 254, 0.9), rgba(238, 242, 255, 0.95));
+        }
+        .pulse-card--honey {
+            background: linear-gradient(160deg, rgba(253, 230, 138, 0.9), rgba(255, 243, 219, 0.95));
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-800 bg-gray-50">
@@ -319,46 +372,46 @@
                         <div class="px-6 py-5 sm:px-8">
                             <h3 class="text-xl font-semibold text-gray-900">Lightweight Pulse Library</h3>
                             <p class="mt-2 text-sm text-gray-600">Quick-touch prompts Ezro can surface in context to capture wellbeing signals without slowing anyone down.</p>
-                            <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Daily Workload Slider</h4>
-                                    <p class="mt-2 text-sm text-gray-600">"How's today's workload?" with Light, Balanced, or Heavy choices in one tap.</p>
+                            <div class="mt-6 pulse-grid">
+                                <article class="pulse-card pulse-card--breeze">
+                                    <h4 class="pulse-card__title">Daily Workload Slider</h4>
+                                    <p class="pulse-card__description">Quickly check-in with Light, Balanced, or Heavy to calibrate nudges.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Energy Check Emoji Tap</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Morning or midday prompt with quick reactions: Energized, Okay, Drained, or Tired.</p>
+                                <article class="pulse-card pulse-card--mint">
+                                    <h4 class="pulse-card__title">Energy Check Emoji Tap</h4>
+                                    <p class="pulse-card__description">Morning or midday pulse using emoji to capture how the team feels.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Weekly Reflection Question</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Friday check-in: "How balanced did your week feel?" with Good, Neutral, or Overloaded responses.</p>
+                                <article class="pulse-card pulse-card--sunrise">
+                                    <h4 class="pulse-card__title">Weekly Reflection Prompt</h4>
+                                    <p class="pulse-card__description">Friday recap of the week: balanced, stretched, or overloaded?</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Nudge-Aware Pulse Check</h4>
-                                    <p class="mt-2 text-sm text-gray-600">If three breaks are skipped, Ezro gently asks how the user is feeling to prevent silent overwork.</p>
+                                <article class="pulse-card pulse-card--lavender">
+                                    <h4 class="pulse-card__title">Nudge-Aware Check-In</h4>
+                                    <p class="pulse-card__description">If breaks are skipped, gently ask how teammates are feeling.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Meeting Overload Tap</h4>
-                                    <p class="mt-2 text-sm text-gray-600">After a day with 5+ meetings, one-tap "Too many meetings today?" feeds back into workload insights.</p>
+                                <article class="pulse-card pulse-card--peach">
+                                    <h4 class="pulse-card__title">Meeting Overload Tap</h4>
+                                    <p class="pulse-card__description">Sense when calendars are packed and offer recovery tactics.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Mood Shift Pulse</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Rotating word set such as Focused, Stressed, Relaxed, or Rushed for extra context when optional insight helps.</p>
+                                <article class="pulse-card pulse-card--aqua">
+                                    <h4 class="pulse-card__title">Mood Shift Words</h4>
+                                    <p class="pulse-card__description">Rotate focus words—Calm, Focused, Stretched—to add context.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">End-of-Day Wrap Pulse</h4>
-                                    <p class="mt-2 text-sm text-gray-600">After the shutdown ritual, ask "How ready do you feel to switch off?" to spot boundary pressure.</p>
+                                <article class="pulse-card pulse-card--rose">
+                                    <h4 class="pulse-card__title">End-of-Day Wrap</h4>
+                                    <p class="pulse-card__description">Ask "Ready to switch off?" to help spot boundary pressure.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Anonymous Team Polls</h4>
-                                    <p class="mt-2 text-sm text-gray-600">Quarterly cultural pulses like "Is downtime respected here?" aggregated for leadership only.</p>
+                                <article class="pulse-card pulse-card--sage">
+                                    <h4 class="pulse-card__title">Anonymous Team Polls</h4>
+                                    <p class="pulse-card__description">Quarterly culture questions only leadership can view in aggregate.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Trend Feedback Prompt</h4>
-                                    <p class="mt-2 text-sm text-gray-600">If three Heavy days appear in a row, offer to set a daily task cap or surface balancing tips.</p>
+                                <article class="pulse-card pulse-card--sky">
+                                    <h4 class="pulse-card__title">Trend Feedback Prompt</h4>
+                                    <p class="pulse-card__description">Surface tips or task caps when heavy days cluster together.</p>
                                 </article>
-                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
-                                    <h4 class="text-base font-semibold text-gray-900">Micro Pulse Celebrations</h4>
-                                    <p class="mt-2 text-sm text-gray-600">When balance stays steady three days running, Ezro highlights the streak: "Great stretch of balance."</p>
+                                <article class="pulse-card pulse-card--honey">
+                                    <h4 class="pulse-card__title">Micro Pulse Celebrations</h4>
+                                    <p class="pulse-card__description">Highlight "balanced streaks" when stability holds three days running.</p>
                                 </article>
                             </div>
                         </div>

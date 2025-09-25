@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover upcoming games and rewards inside Ezro.AI that motivate healthy habits, support employee wellness, and prevent burnout across teams.">
+    <meta name="keywords" content="employee wellness rewards, workplace gamification, prevent burnout incentives, HR wellness engagement">
+    <title>Ezro.AI Games & Rewards | Wellness Engagement to Prevent Burnout</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.2);
+        }
+        .nav-link:hover {
+            color: #38a169;
+        }
+        .sidebar-item:hover {
+            background-color: #f0fff4;
+        }
+        .sidebar-item.active {
+            background-color: #e6fffa;
+            border-left: 4px solid #38a169;
+        }
+        .sidebar {
+            transition: width 0.3s ease;
+        }
+        .sidebar.collapsed {
+            width: 4rem;
+        }
+        .sidebar.collapsed .sidebar-text,
+        .sidebar.collapsed .sidebar-footer-text,
+        .sidebar.collapsed .sidebar-section-label {
+            display: none;
+        }
+        .sidebar.collapsed .sidebar-link {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sidebar.collapsed .sidebar-icon {
+            margin-right: 0;
+        }
+        .sidebar.collapsed .sidebar-footer {
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .sidebar.collapsed .sidebar-footer img {
+            margin-right: 0;
+        }
+        .sidebar.collapsed .sidebar-header {
+            justify-content: center;
+        }
+        .sidebar.collapsed .sidebar-toggle {
+            align-self: center;
+        }
+        .task-item:hover {
+            background-color: #f0fff4;
+        }
+        .task-checkbox:checked + .task-text {
+            text-decoration: line-through;
+            color: #a0aec0;
+        }
+        .wellness-score {
+            background: conic-gradient(#48bb78 var(--percentage), #f0fff4 var(--percentage));
+            box-shadow: 0 4px 6px rgba(72, 187, 120, 0.1);
+            border: 3px solid white;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="text-green-500 h-8 w-8"></i>
+                        <span class="ml-2 text-xl font-bold text-green-600">Ezro.AI</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-6">
+                    <a href="index.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="features.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Features</a>
+                    <a href="pricing.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Pricing</a>
+                    <a href="free-assets.html" class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Free Monthly Assets</a>
+                    <a href="dashboard.html" class="nav-link border-green-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Demo</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <div class="ml-3 relative">
+                        <div>
+                            <button type="button" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="features.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="pricing.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="free-assets.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Free Monthly Assets</a>
+                <a href="dashboard.html" class="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Demo</a>
+                <a href="dashboard.html" class="btn-primary text-white block px-4 py-2 rounded-md text-base font-medium mx-3 my-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="flex pt-16">
+        <!-- Sidebar -->
+        <div id="sidebarContainer" class="hidden md:flex md:flex-shrink-0">
+            <div id="sidebar" class="sidebar flex flex-col w-64 border-r border-gray-200 bg-white">
+                <div class="h-0 flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+                    <div class="sidebar-header flex items-center justify-between px-3">
+                        <p class="sidebar-section-label text-xs font-semibold text-gray-500 uppercase tracking-wider">Navigation</p>
+                        <button type="button" id="sidebarToggle" class="sidebar-toggle text-gray-500 hover:text-green-600 focus:outline-none transform transition-transform duration-300" aria-expanded="true" aria-label="Toggle sidebar">
+                            <i data-feather="chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1 mt-5 px-3 space-y-1">
+                        <a href="dashboard.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="home" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                        <a href="tasks.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="check-circle" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Tasks</span>
+                        </a>
+                        <a href="calendar.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="calendar" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                        <a href="analytics.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="bar-chart-2" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Analytics</span>
+                        </a>
+                        <a href="wellness.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="heart" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Wellness</span>
+                        </a>`r`n                        <a href="games-rewards.html" class="sidebar-link sidebar-item active group flex items-center px-2 py-2 text-sm font-medium rounded-md">`r`n                            <i data-feather="award" class="sidebar-icon mr-3 h-6 w-6 text-green-500"></i>`r`n                            <span class="sidebar-text">Games &amp; Rewards</span>`r`n                        </a>
+                        <a href="settings.html" class="sidebar-link sidebar-item group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <i data-feather="settings" class="sidebar-icon mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500"></i>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar-footer flex-shrink-0 flex border-t border-gray-200 p-4 items-center">
+                    <img class="h-10 w-10 rounded-full" src="http://static.photos/people/200x200/4" alt="User profile">
+                    <div class="sidebar-footer-text ml-3">
+                        <p class="text-base font-medium text-gray-700">John Doe</p>
+                        <p class="text-sm font-medium text-gray-500">View profile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <!-- Welcome Banner -->
+                <div class="gradient-bg rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">Wellness Games &amp; Rewards to Prevent Burnout</h1>
+                            <p class="mt-1 text-gray-600">Micro-gamification concepts that motivate healthy habits, sustain workplace productivity, and keep wellbeing playful.</p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <span class="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-sm font-medium text-green-700">Concept preview</span>
+                            <span class="inline-flex items-center rounded-full bg-green-600 px-3 py-1 text-sm font-medium text-white">Coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Games & Rewards Content -->
+                <div class="space-y-6">
+                    <section class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-6 py-5 sm:px-8">
+                            <h3 class="text-xl font-semibold text-gray-900">Micro-Gamification Sneak Peek</h3>
+                            <p class="mt-3 text-sm text-gray-600">Gentle nudges and celebratory moments that keep wellbeing playful--coming soon to Ezro's dashboard.</p>
+                        </div>
+                    </section>
+
+                    <section class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-6 py-5 sm:px-8">
+                            <h3 class="text-xl font-semibold text-gray-900">Prototype Concepts</h3>
+                            <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Streaks for Balance</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Track consecutive days of honoring quiet hours or wrapping up on time--unlock a soft glow like "3 nights safeguarding downtime."</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Break Buddy Points</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Accept nudges to stretch, hydrate, or breathe and build momentum. Hit 3-5 resets in a day and Ezro gently celebrates the streak.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Balance Score Progression</h4>
+                                    <p class="mt-2 text-sm text-gray-600">When workload and personal goals align, the Balance Score shifts from amber to green--an ambient "level up" without points.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Milestone Moments</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Unlock subtle confetti when you complete 10 shutdown rituals or enjoy a full week with zero after-hours emails.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Weekly Reflection Badge</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Complete 3+ end-of-day reflections and earn a mindful title--think "Mindful Finisher" floating next to your avatar.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">"Future You" Kudos</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Block buffer time and Ezro sends a note--"Future You will love this breathing room." Quiet cheers, no pressure.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Quiet Hours Protectors</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Stay email-free after hours for a week and your personal "Quiet Hours Champions" list lights up--visible only to you.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Mini-Challenges</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Opt-in for gentle quests like "2 standing breaks per day." Earn a soft checkmark animation when you close it out.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Team Balance Wins</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Share anonymous wins--"This week, 60% of the team respected daily task limits." Celebrate the collective rhythm.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Gentle Unlockables</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Keep healthy streaks alive to reveal fresh break ideas--new breathing techniques, stretch loops, and mini soundscapes.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-6 py-5 sm:px-8">
+                            <h3 class="text-xl font-semibold text-gray-900">Lightweight Pulse Library</h3>
+                            <p class="mt-2 text-sm text-gray-600">Quick-touch prompts Ezro can surface in context to capture wellbeing signals without slowing anyone down.</p>
+                            <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Daily Workload Slider</h4>
+                                    <p class="mt-2 text-sm text-gray-600">"How's today's workload?" with Light, Balanced, or Heavy choices in one tap.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Energy Check Emoji Tap</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Morning or midday prompt with quick reactions: Energized, Okay, Drained, or Tired.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Weekly Reflection Question</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Friday check-in: "How balanced did your week feel?" with Good, Neutral, or Overloaded responses.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Nudge-Aware Pulse Check</h4>
+                                    <p class="mt-2 text-sm text-gray-600">If three breaks are skipped, Ezro gently asks how the user is feeling to prevent silent overwork.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Meeting Overload Tap</h4>
+                                    <p class="mt-2 text-sm text-gray-600">After a day with 5+ meetings, one-tap "Too many meetings today?" feeds back into workload insights.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Mood Shift Pulse</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Rotating word set such as Focused, Stressed, Relaxed, or Rushed for extra context when optional insight helps.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">End-of-Day Wrap Pulse</h4>
+                                    <p class="mt-2 text-sm text-gray-600">After the shutdown ritual, ask "How ready do you feel to switch off?" to spot boundary pressure.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Anonymous Team Polls</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Quarterly cultural pulses like "Is downtime respected here?" aggregated for leadership only.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Trend Feedback Prompt</h4>
+                                    <p class="mt-2 text-sm text-gray-600">If three Heavy days appear in a row, offer to set a daily task cap or surface balancing tips.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Micro Pulse Celebrations</h4>
+                                    <p class="mt-2 text-sm text-gray-600">When balance stays steady three days running, Ezro highlights the streak: "Great stretch of balance."</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-6 py-5 sm:px-8">
+                            <h3 class="text-xl font-semibold text-gray-900">Key Design Rules</h3>
+                            <ul class="mt-4 space-y-2 text-sm text-gray-600 list-disc list-inside">
+                                <li>Always optional and easy to dismiss.</li>
+                                <li>Private by default; only aggregates surface to managers.</li>
+                                <li>One-tap responses that work on mobile.</li>
+                                <li>Context-aware triggers that reflect real work patterns.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-6 py-5 sm:px-8">
+                            <h3 class="text-xl font-semibold text-gray-900">Badge Name Moodboard</h3>
+                            <p class="mt-2 text-sm text-gray-600">A playful mix of titles we can award as these mechanics roll out:</p>
+                            <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Downtime Defender</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Earned by guarding quiet hours all week.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Hydration Hero</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Unlocked after a day packed with Break Buddy wins.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Mindful Maverick</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Celebrate consistent reflection and reset rituals.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Quiet Hours Champion</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Awarded for a spotless late-night inbox streak.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Balance Trailblazer</h4>
+                                    <p class="mt-2 text-sm text-gray-600">Recognizes steady progress toward a greener balance score.</p>
+                                </article>
+                                <article class="rounded-lg border border-gray-100 bg-gray-50 p-4">
+                                    <h4 class="text-base font-semibold text-gray-900">Future Self VIP</h4>
+                                    <p class="mt-2 text-sm text-gray-600">For planners who keep tomorrow's calendar clear and kind.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.feather) {
+                feather.replace();
+            }
+            if (window.AOS) {
+                AOS.init({ duration: 800, once: true });
+            }
+
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebarToggle');
+            if (sidebar && toggleButton) {
+                toggleButton.addEventListener('click', function () {
+                    const isCollapsed = sidebar.classList.toggle('collapsed');
+                    toggleButton.setAttribute('aria-expanded', (!isCollapsed).toString());
+                    toggleButton.classList.toggle('rotate-180', isCollapsed);
+                });
+            }
+
+            const mobileMenuToggle = document.querySelector('button[aria-controls="mobile-menu"]');
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    const menu = document.getElementById('mobile-menu');
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
